@@ -30,11 +30,13 @@ namespace SchoolManagment.GUI.SubjectsGUI
         private void ConfigColumns()
         {
             dgv_Subjects.Columns[0].Visible = false;
-            dgv_Subjects.Columns[1].HeaderText = "اسم المادة";
-            dgv_Subjects.Columns[2].HeaderText = "اعمال السنة";
-            dgv_Subjects.Columns[3].HeaderText = "درجة النصفي";
-            dgv_Subjects.Columns[4].HeaderText = "درجة النهائي";
-            dgv_Subjects.Columns[5].HeaderText = "الدرجة النهائية";
+            dgv_Subjects.Columns[1].Visible = false;
+            dgv_Subjects.Columns[2].HeaderText = "اسم المادة";
+            dgv_Subjects.Columns[3].HeaderText = "اعمال السنة";
+            dgv_Subjects.Columns[4].HeaderText = "درجة النصفي";
+            dgv_Subjects.Columns[5].HeaderText = "درجة النهائي";
+            dgv_Subjects.Columns[6].HeaderText = "الدرجة النهائية";
+            dgv_Subjects.Columns[7].HeaderText = "السنة الدراسية";
         }
 
         private async void LoadData()
@@ -57,37 +59,7 @@ namespace SchoolManagment.GUI.SubjectsGUI
             }
         }
 
-        private void Search()
-        {
-            if (string.IsNullOrEmpty(Txt_Search.Text))
-                Data.DefaultView.RowFilter = string.Empty;
-            else
-                Data.DefaultView.RowFilter = $"SubjectName LIKE '%{Txt_Search.Text.Trim()}%'";
-        }
-
-        private async void Edit()
-        {
-            int Id = dgv_Subjects.CurrentRow == null ?
-                (int)dgv_Subjects.Rows[0].Cells[0].Value :
-                (int)dgv_Subjects.CurrentRow.Cells[0].Value;
-            Frm_Add_Edit_Subjects Frm = new Frm_Add_Edit_Subjects(Id);
-            Frm.ShowDialog();
-            LoadData();
-        }
-
-        public SubjectsUserControl()
-        {
-            InitializeComponent();
-            Data = new DataTable();
-            LoadData();
-        }
-
-        private void Txt_Search_TextChanged(object sender, EventArgs e)
-        {
-            Search();
-        }
-
-        private void Btn_Delete_Click(object sender, EventArgs e)
+        private void Delete()
         {
             if (dgv_Subjects.Rows.Count > 0)
             {
@@ -110,13 +82,53 @@ namespace SchoolManagment.GUI.SubjectsGUI
                 catch (SqlException ex)
                 {
                     if (ex.Number == 547)
-                        Messages.ErrorMessage(new Exception("لايمكن حذف هذه المادة لوجود مدرسين يقومون بتدريسها"));
+                    {
+
+                    }
                 }
                 catch (Exception ex)
                 {
                     Messages.ErrorMessage(ex);
                 }
             }
+        }
+
+        private void Search()
+        {
+            if (string.IsNullOrEmpty(Txt_Search.Text))
+                Data.DefaultView.RowFilter = string.Empty;
+            else
+                Data.DefaultView.RowFilter = $"SubjectName LIKE '%{Txt_Search.Text.Trim()}%'";
+        }
+
+        private async void Edit()
+        {
+            if (dgv_Subjects.Rows.Count > 0)
+            {
+                int Id = dgv_Subjects.CurrentRow == null ?
+                    (int)dgv_Subjects.Rows[0].Cells[0].Value :
+                    (int)dgv_Subjects.CurrentRow.Cells[0].Value;
+                Frm_Add_Edit_Subjects Frm = new Frm_Add_Edit_Subjects(Id);
+                Frm.ShowDialog();
+                LoadData();
+            }
+        }
+
+        public SubjectsUserControl()
+        {
+            InitializeComponent();
+            Data = new DataTable();
+            LoadData();
+        }
+
+        private void Txt_Search_TextChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void Btn_Delete_Click(object sender, EventArgs e)
+        {
+            Delete();
         }
 
         private void Btn_teachers_Click(object sender, EventArgs e)

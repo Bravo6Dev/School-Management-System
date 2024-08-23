@@ -100,7 +100,7 @@ namespace BuisnessLayer
             DataTable DT = GetAll();
             if (DT != null)
                 return DT.AsEnumerable()
-                    .FirstOrDefault(R => R.Field<string>("FullName") == FullName) != null;
+                    .Count(R => R.Field<string>("FullName") == FullName) > 0;
             else return false;
         }
     }

@@ -1,5 +1,7 @@
 ﻿using BuisnessLayer;
+using DocumentFormat.OpenXml.Office2016.Excel;
 using SchoolManagment.Codes;
+using SchoolManagment.GUI.ClassesGUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +22,7 @@ namespace SchoolManagment.GUI.StudentsGUI
         {
             get
             {
-                return _Instance ?? (_Instance = new Add_Edit_InfoUserControl()); 
+                return _Instance ?? (_Instance = new Add_Edit_InfoUserControl());
             }
         }
 
@@ -31,9 +33,27 @@ namespace SchoolManagment.GUI.StudentsGUI
 
 
         private int ID;
+        private int ClassID;
         private enMode Mode;
 
         Students Student;
+        Classes Class;
+
+        private async void LoadSubjects()
+        {
+            cmb_Class.DataSource = await Task.Run(() => Classes.GetAll());
+            cmb_Class.ValueMember = "ID";
+            cmb_Class.DisplayMember = "ClassName";
+            ClassID = (int)(cmb_Class.SelectedValue ?? -1)!;
+            Class = Classes.GetById(ClassID);
+            if (Class == null)
+            {
+                Messages.NotFoundMessage();
+                return;
+            }
+            Txt_ClassName.Text = Class.ClassName;
+            //Txt_ClassYear.Text = Class.ClassYear;
+        }
 
         /// <summary>
         /// Load All Data Of Object That Been Send And Fill Fields With It
@@ -49,7 +69,7 @@ namespace SchoolManagment.GUI.StudentsGUI
                 dateTimePicker1.Value = Student.DOB.Date;
                 Txt_Phone.Text = Student.Phone ?? string.Empty;
                 Txt_Address.Text = Student.Address ?? string.Empty;
-                cmb_Subject.SelectedValue = Student.ClassID;
+                cmb_Class.SelectedValue = Student.ClassID;
             }
             catch (Exception ex)
             {
@@ -60,21 +80,20 @@ namespace SchoolManagment.GUI.StudentsGUI
         /// <summary>
         /// Check If Any Required Fields Doesn't Filled
         /// </summary>
-        private bool Valid() =>
-            !(string.IsNullOrEmpty(Txt_Name.Text)
-                || string.IsNullOrEmpty(Txt_EductionOutcome.Text));
+        private bool Valid()
+        => !string.IsNullOrEmpty(Txt_Name.Text);
 
         private void AddNew()
         {
             Student = new Students()
             {
                 FullName = Txt_Name.Text.Trim(),
-                EductionalOutcome = Txt_EductionOutcome.Text.Trim(),
+                DOB = dateTimePicker1.Value,
                 Phone = string.IsNullOrEmpty(Txt_Phone.Text.Trim()) ?
                 null : Txt_Phone.Text.Trim(),
                 Address = string.IsNullOrEmpty(Txt_Address.Text.Trim()) ?
                 null : Txt_Address.Text.Trim(),
-                SubjectID = (int)cmb_Subject.SelectedValue!
+                ClassID = (int)cmb_Class.SelectedValue!
             };
             if (Student.IsDuplicate())
             {
@@ -103,8 +122,8 @@ namespace SchoolManagment.GUI.StudentsGUI
             Student.Phone = string.IsNullOrEmpty(Txt_Phone.Text.Trim()) ?
                 null : Txt_Phone.Text.Trim();
 
-            Student.EductionalOutcome = Txt_EductionOutcome.Text.Trim();
-            Student.SubjectID = (int)cmb_Subject.SelectedValue!;
+            Student.DOB = dateTimePicker1.Value;
+            Student.ClassID = (int)cmb_Class.SelectedValue!;
 
             if (Student.IsDuplicate())
             {
@@ -122,9 +141,9 @@ namespace SchoolManagment.GUI.StudentsGUI
         {
             Txt_Name.Clear();
             Txt_Phone.Clear();
-            Txt_EductionOutcome.Clear();
+            dateTimePicker1.Value = DateTime.Now;
             Txt_Address.Clear();
-            Txt_SubName.Clear();
+            cmb_Class.SelectedIndex = 0;
             Txt_Name.Focus();
         }
 
@@ -136,6 +155,11 @@ namespace SchoolManagment.GUI.StudentsGUI
                 Txt_Name.Focus();
                 return;
             }
+            if (Class.Full())
+            {
+                Messages.FullClassMessage();
+                return;
+            }
             switch (Mode)
             {
                 case enMode.AddNew:
@@ -145,14 +169,14 @@ namespace SchoolManagment.GUI.StudentsGUI
             }
         }
 
-        public Frm_Add_Edit_Student()
+        public Add_Edit_InfoUserControl()
         {
             InitializeComponent();
             LoadSubjects();
             Mode = enMode.AddNew;
         }
 
-        public Frm_Add_Edit_Student(int ID)
+        public Add_Edit_InfoUserControl(int ID)
         {
             InitializeComponent();
             LoadSubjects();
@@ -161,10 +185,6 @@ namespace SchoolManagment.GUI.StudentsGUI
             Mode = enMode.Update;
         }
 
-        private void Btn_Close_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
 
         private void Btn_Clear_Click(object sender, EventArgs e)
         {
@@ -176,14 +196,14 @@ namespace SchoolManagment.GUI.StudentsGUI
             Save();
         }
 
-        private void cmb_Subject_SelectedIndexChanged(object sender, EventArgs e)
+        private void Txt_Phone_Validating(object sender, CancelEventArgs e)
         {
-            Txt_SubName.Text = cmb_Subject.Text;
-        }
-
-        public Add_Edit_InfoUserControl()
-        {
-            InitializeComponent();
+            if (!Helper.ValidPhoneNumber(Txt_Phone.Text.Trim())) 
+            {
+                Messages.UnvalidMessage();
+                Txt_Phone.SelectAll();
+                Txt_Phone.Focus();
+            }
         }
     }
 }

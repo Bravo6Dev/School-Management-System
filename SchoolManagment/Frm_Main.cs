@@ -1,4 +1,5 @@
 using SchoolManagment.Codes;
+using SchoolManagment.GUI.ClassesGUI;
 using SchoolManagment.GUI.StudentsGUI;
 using SchoolManagment.GUI.SubjectsGUI;
 using SchoolManagment.GUI.TeacherGUI;
@@ -34,6 +35,11 @@ namespace SchoolManagment
         private void Btn_Students_Click(object sender, EventArgs e)
         {
             Pages.SetPages(StudentUserControl.Instance);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Pages.SetPages(ClassesUserControl.Instance);
         }
     }
 }

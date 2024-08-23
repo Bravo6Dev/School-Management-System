@@ -29,80 +29,87 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            Btn_Back = new Button();
+            Btn_StudentDegree = new Button();
+            Btn_StudentInfo = new Button();
             Panel_Contanier = new Panel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(button3);
-            panel1.Controls.Add(button2);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(Btn_Back);
+            panel1.Controls.Add(Btn_StudentDegree);
+            panel1.Controls.Add(Btn_StudentInfo);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(189, 516);
+            panel1.Size = new Size(189, 581);
             panel1.TabIndex = 0;
             // 
-            // button1
+            // Btn_Back
             // 
-            button1.Cursor = Cursors.Hand;
-            button1.Dock = DockStyle.Top;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.White;
-            button1.Image = Properties.Resources.graduated;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(0, 0);
-            button1.Name = "button1";
-            button1.Size = new Size(189, 39);
-            button1.TabIndex = 0;
-            button1.Text = "معلومات الطالب";
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = true;
+            Btn_Back.Cursor = Cursors.Hand;
+            Btn_Back.Dock = DockStyle.Bottom;
+            Btn_Back.FlatAppearance.BorderSize = 0;
+            Btn_Back.FlatStyle = FlatStyle.Flat;
+            Btn_Back.ForeColor = Color.White;
+            Btn_Back.Image = Properties.Resources.back;
+            Btn_Back.ImageAlign = ContentAlignment.MiddleLeft;
+            Btn_Back.Location = new Point(0, 542);
+            Btn_Back.Name = "Btn_Back";
+            Btn_Back.Size = new Size(189, 39);
+            Btn_Back.TabIndex = 2;
+            Btn_Back.Text = "الرجوع";
+            Btn_Back.TextImageRelation = TextImageRelation.ImageBeforeText;
+            Btn_Back.UseVisualStyleBackColor = true;
+            Btn_Back.Click += Btn_Back_Click;
             // 
-            // button2
+            // Btn_StudentDegree
             // 
-            button2.Cursor = Cursors.Hand;
-            button2.Dock = DockStyle.Top;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.ForeColor = Color.White;
-            button2.Image = Properties.Resources.report_card;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(0, 39);
-            button2.Name = "button2";
-            button2.Size = new Size(189, 39);
-            button2.TabIndex = 1;
-            button2.Text = "درجات الطالب";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button2.UseVisualStyleBackColor = true;
+            Btn_StudentDegree.Cursor = Cursors.Hand;
+            Btn_StudentDegree.Dock = DockStyle.Top;
+            Btn_StudentDegree.FlatAppearance.BorderSize = 0;
+            Btn_StudentDegree.FlatStyle = FlatStyle.Flat;
+            Btn_StudentDegree.ForeColor = Color.White;
+            Btn_StudentDegree.Image = Properties.Resources.report_card;
+            Btn_StudentDegree.ImageAlign = ContentAlignment.MiddleLeft;
+            Btn_StudentDegree.Location = new Point(0, 39);
+            Btn_StudentDegree.Name = "Btn_StudentDegree";
+            Btn_StudentDegree.Size = new Size(189, 39);
+            Btn_StudentDegree.TabIndex = 1;
+            Btn_StudentDegree.Text = "درجات الطالب";
+            Btn_StudentDegree.TextAlign = ContentAlignment.MiddleLeft;
+            Btn_StudentDegree.TextImageRelation = TextImageRelation.ImageBeforeText;
+            Btn_StudentDegree.UseVisualStyleBackColor = true;
+            Btn_StudentDegree.Click += Btn_StudentInfo_Click;
             // 
-            // button3
+            // Btn_StudentInfo
             // 
-            button3.Cursor = Cursors.Hand;
-            button3.Dock = DockStyle.Bottom;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.ForeColor = Color.White;
-            button3.Image = Properties.Resources.back;
-            button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(0, 477);
-            button3.Name = "button3";
-            button3.Size = new Size(189, 39);
-            button3.TabIndex = 2;
-            button3.Text = "الرجوع";
-            button3.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button3.UseVisualStyleBackColor = true;
+            Btn_StudentInfo.BackColor = Color.FromArgb(59, 130, 246);
+            Btn_StudentInfo.Cursor = Cursors.Hand;
+            Btn_StudentInfo.Dock = DockStyle.Top;
+            Btn_StudentInfo.FlatAppearance.BorderSize = 0;
+            Btn_StudentInfo.FlatStyle = FlatStyle.Flat;
+            Btn_StudentInfo.ForeColor = Color.White;
+            Btn_StudentInfo.Image = Properties.Resources.graduated;
+            Btn_StudentInfo.ImageAlign = ContentAlignment.MiddleLeft;
+            Btn_StudentInfo.Location = new Point(0, 0);
+            Btn_StudentInfo.Name = "Btn_StudentInfo";
+            Btn_StudentInfo.Size = new Size(189, 39);
+            Btn_StudentInfo.TabIndex = 0;
+            Btn_StudentInfo.Text = "معلومات الطالب";
+            Btn_StudentInfo.TextAlign = ContentAlignment.MiddleLeft;
+            Btn_StudentInfo.TextImageRelation = TextImageRelation.ImageBeforeText;
+            Btn_StudentInfo.UseVisualStyleBackColor = false;
+            Btn_StudentInfo.Click += Btn_StudentInfo_Click;
             // 
             // Panel_Contanier
             // 
             Panel_Contanier.Dock = DockStyle.Fill;
             Panel_Contanier.Location = new Point(189, 0);
             Panel_Contanier.Name = "Panel_Contanier";
-            Panel_Contanier.Size = new Size(531, 516);
+            Panel_Contanier.Size = new Size(638, 581);
             Panel_Contanier.TabIndex = 1;
             // 
             // Frm_Add_Edit_Student
@@ -110,17 +117,18 @@
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(46, 46, 46);
-            ClientSize = new Size(720, 516);
+            ClientSize = new Size(827, 581);
             Controls.Add(Panel_Contanier);
             Controls.Add(panel1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "Frm_Add_Edit_Student";
             RightToLeft = RightToLeft.Yes;
             RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Frm_Add_Edit_Grades";
+            Load += Frm_Add_Edit_Student_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -128,9 +136,9 @@
         #endregion
 
         private Panel panel1;
-        private Button button1;
-        private Button button3;
-        private Button button2;
-        private Panel Panel_Contanier;
+        private Button Btn_StudentInfo;
+        private Button Btn_Back;
+        private Button Btn_StudentDegree;
+        public Panel Panel_Contanier;
     }
 }

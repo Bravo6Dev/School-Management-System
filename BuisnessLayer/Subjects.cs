@@ -22,25 +22,31 @@ namespace BuisnessLayer
                 return GeneralGrade + MidTermMostGrade + FinalMidTerm;
             }
         }
+        public int StudiedYear { get; set; }
+
+        public StudeiedYearsData Class { get; set; }
+
+
         public Subjects()
         {
             Mode = enMode.AddNew;
         }
 
-        public Subjects(int ID, string SubjectName, int GeneralMostGrade, int MidTermMostGrade, int FinalMidTerm, int MostGrade)
+        private Subjects(int ID, string SubjectName, int GeneralMostGrade, int MidTermMostGrade, int FinalMidTerm, int ClassID)
         {
             this.ID = ID;
             this.SubjectName = SubjectName;
             this.GeneralGrade = GeneralMostGrade;
             this.MidTermMostGrade = MidTermMostGrade;
             this.FinalMidTerm = FinalMidTerm;
+            this.StudiedYear = ClassID;
 
             Mode = enMode.Update;
         }
 
         private bool AddNew()
         {
-            ID = SubjectsData.AddNew(SubjectName, GeneralGrade, MidTermMostGrade, FinalMidTerm, MostGrade);
+            ID = SubjectsData.AddNew(SubjectName, GeneralGrade, MidTermMostGrade, FinalMidTerm, MostGrade, StudiedYear);
             return ID != -1;
         }
 
@@ -52,7 +58,7 @@ namespace BuisnessLayer
 
         private bool Update()
         {
-            return SubjectsData.Update(ID, SubjectName, GeneralGrade, MidTermMostGrade, FinalMidTerm, MostGrade);
+            return SubjectsData.Update(ID, SubjectName, GeneralGrade, MidTermMostGrade, FinalMidTerm, MostGrade, StudiedYear);
         }
 
         static public bool Delete(int ID)
@@ -74,8 +80,9 @@ namespace BuisnessLayer
             int MidTermMostGrade = 0;
             int FinalMidTerm = 0;
             int MostGrade = 0;
+            int ClassID = 0;
 
-            return SubjectsData.Find(ID, ref SubjectName, ref GeneralMostGrade, ref MidTermMostGrade, ref FinalMidTerm, ref MostGrade) ?
+            return SubjectsData.Find(ID, ref SubjectName, ref GeneralMostGrade, ref MidTermMostGrade, ref FinalMidTerm, ref MostGrade, ref ClassID) ?
                 new Subjects(ID, SubjectName, GeneralMostGrade, MidTermMostGrade, FinalMidTerm, MostGrade) : null;
         }
 
@@ -100,7 +107,13 @@ namespace BuisnessLayer
         {
             DataTable DT = GetAll();
             return DT.AsEnumerable()
-                .FirstOrDefault(S => S.Field<string>("SubjectName") == SubjectName) != null;
+                .Count(S => S.Field<string>("SubjectName") == SubjectName) > 0;
+        }
+
+        public static DataTable GetSubjectForClass(int ClassID)
+        {
+            return GetAll().AsEnumerable()
+                .Where(R => R.Field<int>("StudiedYear") == ClassID).CopyToDataTable();
         }
     }
 }

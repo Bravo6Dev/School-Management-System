@@ -40,8 +40,17 @@ namespace DataLayer
                 {
                     cmd.Parameters.AddWithValue("@FullName", FullName);
                     cmd.Parameters.AddWithValue("@DOB", DOB);
-                    cmd.Parameters.AddWithValue("@Address", Address);
-                    cmd.Parameters.AddWithValue("@Phone", Phone);
+
+                    if (Address != null)
+                        cmd.Parameters.AddWithValue("@Address", Address);   
+                    else
+                        cmd.Parameters.AddWithValue("@Address", DBNull.Value);   
+
+                    if (Phone != null) 
+                        cmd.Parameters.AddWithValue("@Phone", Phone);
+                    else
+                        cmd.Parameters.AddWithValue("@Phone", DBNull.Value);
+
                     cmd.Parameters.AddWithValue("@ClassID", ClassID);
                     object result = cmd.ExecuteScalar();
                     if (result != null && int.TryParse(result.ToString(), out int ID)) { return ID; }
@@ -83,13 +92,24 @@ namespace DataLayer
                     cmd.Parameters.AddWithValue("@ID", ID);
                     cmd.Parameters.AddWithValue("@FullName", FullName);
                     cmd.Parameters.AddWithValue("@DOB", DOB);
-                    cmd.Parameters.AddWithValue("@Address", Address);
-                    cmd.Parameters.AddWithValue("@Phone", Phone);
+
+
+                    if (Address != null)
+                        cmd.Parameters.AddWithValue("@Address", Address);
+                    else
+                        cmd.Parameters.AddWithValue("@Address", DBNull.Value);
+
+                    if (Phone != null)
+                        cmd.Parameters.AddWithValue("@Phone", Phone);
+                    else
+                        cmd.Parameters.AddWithValue("@Phone", DBNull.Value);
+
                     cmd.Parameters.AddWithValue("@ClassID", ClassID);
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }
         }
+
         static public bool Find(int ID, ref string FullName, ref DateTime DOB, ref string Address, ref string Phone, ref int ClassID)
         {
             using (SqlConnection Conn = new SqlConnection(Connstr))
@@ -106,10 +126,9 @@ namespace DataLayer
                         {
                             FullName = Convert.ToString(Reader["FullName"]);
                             DOB = Convert.ToDateTime(Reader["DOB"]);
-                            Address = Convert.ToString(Reader["Address"]);
-                            Phone = Convert.ToString(Reader["Phone"]);
+                            Address = Convert.ToString(Reader["Address"] ?? string.Empty);
+                            Phone = Convert.ToString(Reader["Phone"] ?? string.Empty);
                             ClassID = Convert.ToInt32(Reader["ClassID"]);
-
                         }
                         return true;
                     }

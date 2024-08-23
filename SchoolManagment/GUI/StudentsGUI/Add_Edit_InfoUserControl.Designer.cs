@@ -68,6 +68,7 @@
             Btn_Clear.Text = "مسح الحقول";
             Btn_Clear.TextImageRelation = TextImageRelation.ImageBeforeText;
             Btn_Clear.UseVisualStyleBackColor = false;
+            Btn_Clear.Click += Btn_Clear_Click;
             // 
             // Btn_Save
             // 
@@ -84,6 +85,7 @@
             Btn_Save.Text = "حفظ";
             Btn_Save.TextImageRelation = TextImageRelation.ImageBeforeText;
             Btn_Save.UseVisualStyleBackColor = false;
+            Btn_Save.Click += Btn_Save_Click;
             // 
             // groupBox1
             // 
@@ -129,6 +131,7 @@
             Txt_Phone.Name = "Txt_Phone";
             Txt_Phone.Size = new Size(217, 29);
             Txt_Phone.TabIndex = 108;
+            Txt_Phone.Validating += Txt_Phone_Validating;
             // 
             // label6
             // 
@@ -313,13 +316,13 @@
         private Label label2;
         private Label label1;
         private GroupBox groupBox2;
-        private TextBox Txt_ClassYear;
-        private Label label9;
         private ComboBox cmb_Class;
         private TextBox Txt_ClassName;
         private Label label10;
         private Label label11;
         private Label label12;
         private DateTimePicker dateTimePicker1;
+        private TextBox Txt_ClassYear;
+        private Label label9;
     }
 }

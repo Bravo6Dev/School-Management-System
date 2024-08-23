@@ -113,6 +113,7 @@
             Txt_Phone.Name = "Txt_Phone";
             Txt_Phone.Size = new Size(217, 29);
             Txt_Phone.TabIndex = 2;
+            Txt_Phone.Validating += Txt_Phone_Validating;
             // 
             // Txt_EductionOutcome
             // 

@@ -38,6 +38,7 @@
             Btn_teachers = new Button();
             Btn_Edit = new Button();
             Btn_Delete = new Button();
+            button1 = new Button();
             panel1 = new Panel();
             cmb_Filter = new ComboBox();
             Txt_Search = new TextBox();
@@ -53,7 +54,7 @@
             // 
             Pic_Loading.BackColor = Color.FromArgb(30, 30, 30);
             Pic_Loading.Image = Properties.Resources.hzk6C;
-            Pic_Loading.Location = new Point(404, 227);
+            Pic_Loading.Location = new Point(402, 227);
             Pic_Loading.Name = "Pic_Loading";
             Pic_Loading.Size = new Size(241, 84);
             Pic_Loading.SizeMode = PictureBoxSizeMode.Zoom;
@@ -65,7 +66,7 @@
             lbl_Data.AutoSize = true;
             lbl_Data.BackColor = Color.FromArgb(30, 30, 30);
             lbl_Data.ForeColor = Color.White;
-            lbl_Data.Location = new Point(479, 259);
+            lbl_Data.Location = new Point(477, 259);
             lbl_Data.Name = "lbl_Data";
             lbl_Data.Size = new Size(91, 21);
             lbl_Data.TabIndex = 0;
@@ -77,6 +78,7 @@
             flowLayoutPanel1.Controls.Add(Btn_teachers);
             flowLayoutPanel1.Controls.Add(Btn_Edit);
             flowLayoutPanel1.Controls.Add(Btn_Delete);
+            flowLayoutPanel1.Controls.Add(button1);
             flowLayoutPanel1.Controls.Add(panel1);
             flowLayoutPanel1.Dock = DockStyle.Top;
             flowLayoutPanel1.Location = new Point(0, 0);
@@ -95,11 +97,11 @@
             Btn_teachers.ForeColor = Color.White;
             Btn_teachers.Image = Properties.Resources.add;
             Btn_teachers.ImageAlign = ContentAlignment.MiddleLeft;
-            Btn_teachers.Location = new Point(889, 10);
+            Btn_teachers.Location = new Point(908, 10);
             Btn_teachers.Margin = new Padding(5, 5, 10, 5);
             Btn_teachers.Name = "Btn_teachers";
             Btn_teachers.Padding = new Padding(3);
-            Btn_teachers.Size = new Size(129, 43);
+            Btn_teachers.Size = new Size(110, 43);
             Btn_teachers.TabIndex = 2;
             Btn_teachers.Text = "اضافة";
             Btn_teachers.TextAlign = ContentAlignment.MiddleLeft;
@@ -117,11 +119,11 @@
             Btn_Edit.ForeColor = Color.White;
             Btn_Edit.Image = Properties.Resources.pencil;
             Btn_Edit.ImageAlign = ContentAlignment.MiddleLeft;
-            Btn_Edit.Location = new Point(745, 10);
+            Btn_Edit.Location = new Point(783, 10);
             Btn_Edit.Margin = new Padding(5, 5, 10, 5);
             Btn_Edit.Name = "Btn_Edit";
             Btn_Edit.Padding = new Padding(3);
-            Btn_Edit.Size = new Size(129, 43);
+            Btn_Edit.Size = new Size(110, 43);
             Btn_Edit.TabIndex = 3;
             Btn_Edit.Text = "تحديث";
             Btn_Edit.TextAlign = ContentAlignment.MiddleLeft;
@@ -139,11 +141,11 @@
             Btn_Delete.ForeColor = Color.White;
             Btn_Delete.Image = Properties.Resources.bin;
             Btn_Delete.ImageAlign = ContentAlignment.MiddleLeft;
-            Btn_Delete.Location = new Point(601, 10);
+            Btn_Delete.Location = new Point(658, 10);
             Btn_Delete.Margin = new Padding(5, 5, 10, 5);
             Btn_Delete.Name = "Btn_Delete";
             Btn_Delete.Padding = new Padding(3);
-            Btn_Delete.Size = new Size(129, 43);
+            Btn_Delete.Size = new Size(110, 43);
             Btn_Delete.TabIndex = 4;
             Btn_Delete.Text = "حذف";
             Btn_Delete.TextAlign = ContentAlignment.MiddleLeft;
@@ -151,11 +153,32 @@
             Btn_Delete.UseVisualStyleBackColor = false;
             Btn_Delete.Click += Btn_Delete_Click;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(59, 130, 246);
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(220, 38, 38);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.White;
+            button1.Image = Properties.Resources.report_card2;
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(533, 10);
+            button1.Margin = new Padding(5, 5, 10, 5);
+            button1.Name = "button1";
+            button1.Padding = new Padding(3);
+            button1.Size = new Size(110, 43);
+            button1.TabIndex = 6;
+            button1.Text = "الدرجات";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.UseVisualStyleBackColor = false;
+            // 
             // panel1
             // 
             panel1.Controls.Add(cmb_Filter);
             panel1.Controls.Add(Txt_Search);
-            panel1.Location = new Point(104, 12);
+            panel1.Location = new Point(36, 12);
             panel1.Margin = new Padding(6, 7, 13, 7);
             panel1.Name = "panel1";
             panel1.Size = new Size(481, 41);
@@ -193,7 +216,7 @@
             Btn_Excel.ForeColor = Color.White;
             Btn_Excel.Image = Properties.Resources.office365;
             Btn_Excel.ImageAlign = ContentAlignment.MiddleLeft;
-            Btn_Excel.Location = new Point(994, 490);
+            Btn_Excel.Location = new Point(992, 490);
             Btn_Excel.Margin = new Padding(6, 7, 13, 7);
             Btn_Excel.Name = "Btn_Excel";
             Btn_Excel.Padding = new Padding(5);
@@ -203,7 +226,7 @@
             Btn_Excel.UseVisualStyleBackColor = false;
             Btn_Excel.Click += Btn_Excel_Click;
             // 
-            // dgv_Subjects
+            // dgv_Teachers
             // 
             dgv_Teachers.AllowUserToAddRows = false;
             dgv_Teachers.AllowUserToDeleteRows = false;
@@ -242,7 +265,7 @@
             dgv_Teachers.EnableHeadersVisualStyles = false;
             dgv_Teachers.Location = new Point(0, 72);
             dgv_Teachers.MultiSelect = false;
-            dgv_Teachers.Name = "dgv_Subjects";
+            dgv_Teachers.Name = "dgv_Teachers";
             dgv_Teachers.ReadOnly = true;
             dgv_Teachers.RowHeadersVisible = false;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -303,5 +326,6 @@
         private ComboBox cmb_Filter;
         private TextBox Txt_Search;
         private DataGridView dgv_Teachers;
+        private Button button1;
     }
 }

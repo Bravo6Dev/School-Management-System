@@ -25,6 +25,27 @@ namespace DataLayer
             return DT;
         }
 
+        static public DataTable GetAllByStudentID(int StudentId)
+        {
+            DataTable DT = new DataTable();
+            using (SqlConnection Conn = new SqlConnection(Connstr))
+            {
+                string Query = @"SELECT SubjectName, GeneralGrade, MidTermGrade, FineTermGrade  FROM SubjectResult
+                                JOIN Subjects ON Subjects.ID = SubjectResult.SubjectID 
+                                WHERE [StudentID] = @StudentID";
+                Conn.Open();
+                using (SqlCommand cmd = new SqlCommand(Query, Conn))
+                {
+                    cmd.Parameters.AddWithValue("@StudentID", StudentId);
+                    using (SqlDataReader Reader = cmd.ExecuteReader())
+                    {
+                        DT.Load(Reader);
+                    }
+                }
+            }
+            return DT;
+        }
+
         static public int AddNew(int StudentID, int SubjectID, int MidTermGrade, int FineTermGrade, int GeneralGrade)
         {
             using (SqlConnection Conn = new SqlConnection(Connstr))
@@ -90,6 +111,7 @@ namespace DataLayer
                 }
             }
         }
+
         static public bool Find(int ID, ref int StudentID, ref int SubjectID,  ref int MidTermGrade, ref int FineTermGrade, ref int GeneralGrade)
         {
             using (SqlConnection Conn = new SqlConnection(Connstr))
@@ -117,5 +139,58 @@ namespace DataLayer
             }
         }
 
+        static public bool FindBySubjectIDAndStudentID(int SubjectID, int StudentID, ref int ID, ref int MidTermGrade, ref int FineTermGrade, ref int GeneralGrade)
+        {
+            using (SqlConnection Conn = new SqlConnection(Connstr))
+            {
+                string Query = @"SELECT * FROM SubjectResult
+                                    WHERE [SubjectID] = @SubjectID AND [StudentID] = @StudentID";
+                Conn.Open();
+                using (SqlCommand cmd = new SqlCommand(Query, Conn))
+                {
+                    cmd.Parameters.AddWithValue("@SubjectID", SubjectID);
+                    cmd.Parameters.AddWithValue("@StudentID", StudentID);
+
+                    using (SqlDataReader Reader = cmd.ExecuteReader())
+                    {
+                        if (Reader.Read())
+                        {
+                            ID = Convert.ToInt32(Reader["ID"]);
+                            MidTermGrade = Convert.ToInt32(Reader["MidTermGrade"]);
+                            FineTermGrade = Convert.ToInt32(Reader["FineTermGrade"]);
+                            GeneralGrade = Convert.ToInt32(Reader["GeneralGrade"]);
+                        }
+                        return true;
+                    }
+                }
+            }
+        }
+
+        static public bool FindByStudentID(int StudentID, ref int SubjectID, ref int ID, ref int MidTermGrade, ref int FineTermGrade, ref int GeneralGrade)
+        {
+            using (SqlConnection Conn = new SqlConnection(Connstr))
+            {
+                string Query = @"SELECT * FROM SubjectResult
+                                    WHERE [StudentID] = @StudentID";
+                Conn.Open();
+                using (SqlCommand cmd = new SqlCommand(Query, Conn))
+                {
+                    cmd.Parameters.AddWithValue("@StudentID", StudentID);
+
+                    using (SqlDataReader Reader = cmd.ExecuteReader())
+                    {
+                        if (Reader.Read())
+                        {
+                            ID = Convert.ToInt32(Reader["ID"]);
+                            SubjectID = Convert.ToInt32(Reader["SubjectID"]);
+                            MidTermGrade = Convert.ToInt32(Reader["MidTermGrade"]);
+                            FineTermGrade = Convert.ToInt32(Reader["FineTermGrade"]);
+                            GeneralGrade = Convert.ToInt32(Reader["GeneralGrade"]);
+                        }
+                        return true;
+                    }
+                }
+            }
+        }
     }
 }

@@ -6,12 +6,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using System.Text.RegularExpressions;
 
 namespace SchoolManagment.Codes
 {
     public class Helper
     {
+        private static Regex Pattern;
         /// <summary>
         /// Export The Data To Excel Sheet Using Closed.Excel Library
         /// </summary>
@@ -44,6 +45,15 @@ namespace SchoolManagment.Codes
             {
                 Messages.ErrorMessage(ex);
             }
+        }
+
+        public static bool ValidPhoneNumber(string phoneNumber)
+        {
+            Pattern = new Regex("(091|092|093|094)\\s*\\d{7}");
+            if (string.IsNullOrEmpty(phoneNumber))
+                return true;
+            else
+                return Pattern.IsMatch(phoneNumber);
         }
     }
 }

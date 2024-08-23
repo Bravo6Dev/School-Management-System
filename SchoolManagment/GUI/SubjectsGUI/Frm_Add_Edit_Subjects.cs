@@ -21,6 +21,15 @@ namespace SchoolManagment.GUI.SubjectsGUI
 
         Subjects Subject;
 
+        private async void LoadClasses()
+        {
+            cmb_Classes.DataSource = await Task.Run(() => Classes.GetAll());
+            cmb_Classes.ValueMember = "ID";
+            cmb_Classes.DisplayMember = "ClassYear";
+            if (cmb_Classes.Items.Count > 0)
+                cmb_Classes.SelectedIndex = 0;
+        }
+
         private void LoadDataUpdateMode()
         {
             try
@@ -32,6 +41,7 @@ namespace SchoolManagment.GUI.SubjectsGUI
                 numeric_GeneralGrade.Value = Subject.GeneralGrade;
                 numeric_MidTermGrade.Value = Subject.MidTermMostGrade;
                 numeric_FinalTermGrade.Value = Subject.FinalMidTerm;
+                cmb_Classes.SelectedValue = Subject.StudiedYear;
             }
             catch (Exception ex)
             {
@@ -50,6 +60,7 @@ namespace SchoolManagment.GUI.SubjectsGUI
                 GeneralGrade = (int)numeric_GeneralGrade.Value,
                 MidTermMostGrade = (int)numeric_MidTermGrade.Value,
                 FinalMidTerm = (int)numeric_FinalTermGrade.Value,
+                StudiedYear = (int)cmb_Classes.SelectedValue!
             };
             if (Subject.IsDuplicate())
             {
@@ -75,13 +86,11 @@ namespace SchoolManagment.GUI.SubjectsGUI
             Subject.GeneralGrade = (int)numeric_GeneralGrade.Value;
             Subject.MidTermMostGrade = (int)numeric_MidTermGrade.Value;
             Subject.FinalMidTerm = (int)numeric_FinalTermGrade.Value;
-
             if (Subject.IsDuplicate())
             {
                 Messages.DuplicateDataMessage(Data.Subject);
                 return;
             }
-
             if (Subject.Save())
                 Messages.UpdateMessage(true);
             else
@@ -125,6 +134,7 @@ namespace SchoolManagment.GUI.SubjectsGUI
             InitializeComponent();
             this.ID = ID;
             LoadDataUpdateMode();
+            cmb_Classes.Enabled = false;
             Mode = enMode.Update;
         }
 
@@ -143,5 +153,9 @@ namespace SchoolManagment.GUI.SubjectsGUI
             Save();
         }
 
+        private void Frm_Add_Edit_Subjects_Load(object sender, EventArgs e)
+        {
+            LoadClasses();
+        }
     }
 }

@@ -29,27 +29,30 @@
         private void InitializeComponent()
         {
             Btn_Clear = new Button();
-            Txt_Name = new TextBox();
-            label2 = new Label();
-            label1 = new Label();
-            Btn_Save = new Button();
-            groupBox1 = new GroupBox();
+            cmb_Classes = new ComboBox();
             numeric_MidTermGrade = new NumericUpDown();
             label6 = new Label();
             numeric_FinalTermGrade = new NumericUpDown();
             label8 = new Label();
             numeric_GeneralGrade = new NumericUpDown();
+            Btn_Close = new Button();
+            panel1 = new Panel();
             label4 = new Label();
             label5 = new Label();
             label7 = new Label();
+            Txt_Name = new TextBox();
+            label10 = new Label();
             label3 = new Label();
-            Btn_Close = new Button();
-            panel1 = new Panel();
-            groupBox1.SuspendLayout();
+            label9 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            Btn_Save = new Button();
+            groupBox1 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)numeric_MidTermGrade).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numeric_FinalTermGrade).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numeric_GeneralGrade).BeginInit();
             panel1.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // Btn_Clear
@@ -61,80 +64,22 @@
             Btn_Clear.FlatStyle = FlatStyle.Flat;
             Btn_Clear.Image = Properties.Resources.clean;
             Btn_Clear.ImageAlign = ContentAlignment.MiddleLeft;
-            Btn_Clear.Location = new Point(334, 275);
+            Btn_Clear.Location = new Point(332, 291);
             Btn_Clear.Name = "Btn_Clear";
             Btn_Clear.Size = new Size(217, 40);
-            Btn_Clear.TabIndex = 7;
+            Btn_Clear.TabIndex = 15;
             Btn_Clear.Text = "مسح الحقول";
             Btn_Clear.TextImageRelation = TextImageRelation.ImageBeforeText;
             Btn_Clear.UseVisualStyleBackColor = false;
             // 
-            // Txt_Name
+            // cmb_Classes
             // 
-            Txt_Name.BorderStyle = BorderStyle.FixedSingle;
-            Txt_Name.Location = new Point(338, 76);
-            Txt_Name.Name = "Txt_Name";
-            Txt_Name.Size = new Size(217, 29);
-            Txt_Name.TabIndex = 0;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.ForeColor = Color.Red;
-            label2.Location = new Point(449, 41);
-            label2.Name = "label2";
-            label2.Size = new Size(17, 21);
-            label2.TabIndex = 1;
-            label2.Text = "*";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(469, 41);
-            label1.Name = "label1";
-            label1.Size = new Size(85, 21);
-            label1.TabIndex = 100;
-            label1.Text = "اسم المادة :";
-            // 
-            // Btn_Save
-            // 
-            Btn_Save.BackColor = Color.FromArgb(16, 185, 129);
-            Btn_Save.Cursor = Cursors.Hand;
-            Btn_Save.FlatAppearance.BorderSize = 0;
-            Btn_Save.FlatAppearance.MouseOverBackColor = Color.FromArgb(5, 150, 105);
-            Btn_Save.FlatStyle = FlatStyle.Flat;
-            Btn_Save.Image = Properties.Resources.save_instagram;
-            Btn_Save.ImageAlign = ContentAlignment.MiddleLeft;
-            Btn_Save.Location = new Point(33, 275);
-            Btn_Save.Name = "Btn_Save";
-            Btn_Save.Size = new Size(217, 40);
-            Btn_Save.TabIndex = 8;
-            Btn_Save.Text = "حفظ";
-            Btn_Save.TextImageRelation = TextImageRelation.ImageBeforeText;
-            Btn_Save.UseVisualStyleBackColor = false;
-            Btn_Save.Click += Btn_Save_Click;
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(numeric_MidTermGrade);
-            groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(numeric_FinalTermGrade);
-            groupBox1.Controls.Add(label8);
-            groupBox1.Controls.Add(numeric_GeneralGrade);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(label7);
-            groupBox1.Controls.Add(Txt_Name);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(label1);
-            groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(12, 37);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(573, 214);
-            groupBox1.TabIndex = 5;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "معلومات المادة";
+            cmb_Classes.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmb_Classes.FormattingEnabled = true;
+            cmb_Classes.Location = new Point(187, 162);
+            cmb_Classes.Name = "cmb_Classes";
+            cmb_Classes.Size = new Size(225, 29);
+            cmb_Classes.TabIndex = 102;
             // 
             // numeric_MidTermGrade
             // 
@@ -198,6 +143,28 @@
             numeric_GeneralGrade.UpDownAlign = LeftRightAlignment.Left;
             numeric_GeneralGrade.Value = new decimal(new int[] { 10, 0, 0, 0 });
             // 
+            // Btn_Close
+            // 
+            Btn_Close.Cursor = Cursors.Hand;
+            Btn_Close.Dock = DockStyle.Right;
+            Btn_Close.FlatAppearance.BorderSize = 0;
+            Btn_Close.FlatStyle = FlatStyle.Flat;
+            Btn_Close.Image = Properties.Resources.close;
+            Btn_Close.Location = new Point(563, 0);
+            Btn_Close.Name = "Btn_Close";
+            Btn_Close.Size = new Size(34, 31);
+            Btn_Close.TabIndex = 0;
+            Btn_Close.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(Btn_Close);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(597, 31);
+            panel1.TabIndex = 13;
+            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -226,6 +193,24 @@
             label7.TabIndex = 100;
             label7.Text = "درجة النهائي :";
             // 
+            // Txt_Name
+            // 
+            Txt_Name.BorderStyle = BorderStyle.FixedSingle;
+            Txt_Name.Location = new Point(338, 76);
+            Txt_Name.Name = "Txt_Name";
+            Txt_Name.Size = new Size(217, 29);
+            Txt_Name.TabIndex = 0;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.ForeColor = Color.Red;
+            label10.Location = new Point(288, 128);
+            label10.Name = "label10";
+            label10.Size = new Size(17, 21);
+            label10.TabIndex = 1;
+            label10.Text = "*";
+            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -235,28 +220,75 @@
             label3.TabIndex = 100;
             label3.Text = "اعمال السنة :";
             // 
-            // Btn_Close
+            // label9
             // 
-            Btn_Close.Cursor = Cursors.Hand;
-            Btn_Close.Dock = DockStyle.Right;
-            Btn_Close.FlatAppearance.BorderSize = 0;
-            Btn_Close.FlatStyle = FlatStyle.Flat;
-            Btn_Close.Image = Properties.Resources.close;
-            Btn_Close.Location = new Point(563, 0);
-            Btn_Close.Name = "Btn_Close";
-            Btn_Close.Size = new Size(34, 31);
-            Btn_Close.TabIndex = 0;
-            Btn_Close.UseVisualStyleBackColor = true;
-            Btn_Close.Click += Btn_Close_Click;
+            label9.AutoSize = true;
+            label9.Location = new Point(299, 128);
+            label9.Name = "label9";
+            label9.Size = new Size(113, 21);
+            label9.TabIndex = 100;
+            label9.Text = "السنة الدراسية : ";
             // 
-            // panel1
+            // label2
             // 
-            panel1.Controls.Add(Btn_Close);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(597, 31);
-            panel1.TabIndex = 4;
+            label2.AutoSize = true;
+            label2.ForeColor = Color.Red;
+            label2.Location = new Point(449, 41);
+            label2.Name = "label2";
+            label2.Size = new Size(17, 21);
+            label2.TabIndex = 1;
+            label2.Text = "*";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(469, 41);
+            label1.Name = "label1";
+            label1.Size = new Size(85, 21);
+            label1.TabIndex = 100;
+            label1.Text = "اسم المادة :";
+            // 
+            // Btn_Save
+            // 
+            Btn_Save.BackColor = Color.FromArgb(16, 185, 129);
+            Btn_Save.Cursor = Cursors.Hand;
+            Btn_Save.FlatAppearance.BorderSize = 0;
+            Btn_Save.FlatAppearance.MouseOverBackColor = Color.FromArgb(5, 150, 105);
+            Btn_Save.FlatStyle = FlatStyle.Flat;
+            Btn_Save.Image = Properties.Resources.save_instagram;
+            Btn_Save.ImageAlign = ContentAlignment.MiddleLeft;
+            Btn_Save.Location = new Point(31, 291);
+            Btn_Save.Name = "Btn_Save";
+            Btn_Save.Size = new Size(217, 40);
+            Btn_Save.TabIndex = 16;
+            Btn_Save.Text = "حفظ";
+            Btn_Save.TextImageRelation = TextImageRelation.ImageBeforeText;
+            Btn_Save.UseVisualStyleBackColor = false;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(cmb_Classes);
+            groupBox1.Controls.Add(numeric_MidTermGrade);
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(numeric_FinalTermGrade);
+            groupBox1.Controls.Add(label8);
+            groupBox1.Controls.Add(numeric_GeneralGrade);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(Txt_Name);
+            groupBox1.Controls.Add(label10);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label9);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label1);
+            groupBox1.ForeColor = Color.White;
+            groupBox1.Location = new Point(10, 53);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(573, 214);
+            groupBox1.TabIndex = 14;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "معلومات المادة";
             // 
             // Frm_Add_Edit_Subjects
             // 
@@ -265,9 +297,9 @@
             BackColor = Color.FromArgb(46, 46, 46);
             ClientSize = new Size(597, 349);
             Controls.Add(Btn_Clear);
+            Controls.Add(panel1);
             Controls.Add(Btn_Save);
             Controls.Add(groupBox1);
-            Controls.Add(panel1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ForeColor = Color.White;
             FormBorderStyle = FormBorderStyle.None;
@@ -277,33 +309,37 @@
             RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Frm_Add_Edit_Subjects";
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            Load += Frm_Add_Edit_Subjects_Load;
             ((System.ComponentModel.ISupportInitialize)numeric_MidTermGrade).EndInit();
             ((System.ComponentModel.ISupportInitialize)numeric_FinalTermGrade).EndInit();
             ((System.ComponentModel.ISupportInitialize)numeric_GeneralGrade).EndInit();
             panel1.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Button Btn_Clear;
+        private ComboBox cmb_Classes;
+        private NumericUpDown numeric_MidTermGrade;
+        private Label label6;
+        private NumericUpDown numeric_FinalTermGrade;
+        private Label label8;
+        private NumericUpDown numeric_GeneralGrade;
+        private Button Btn_Close;
+        private Panel panel1;
+        private Label label4;
+        private Label label5;
+        private Label label7;
         private TextBox Txt_Name;
+        private Label label10;
+        private Label label3;
+        private Label label9;
         private Label label2;
         private Label label1;
         private Button Btn_Save;
         private GroupBox groupBox1;
-        private Button Btn_Close;
-        private Panel panel1;
-        private Label label4;
-        private Label label3;
-        private NumericUpDown numeric_GeneralGrade;
-        private NumericUpDown numeric_MidTermGrade;
-        private Label label6;
-        private Label label5;
-        private NumericUpDown numeric_FinalTermGrade;
-        private Label label8;
-        private Label label7;
     }
 }

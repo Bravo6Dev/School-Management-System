@@ -1,4 +1,5 @@
 ﻿using BuisnessLayer;
+using SchoolManagment.Codes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,6 +30,33 @@ namespace SchoolManagment.GUI.StudentsGUI
             Controls.Remove(Pic_Loading);
             Pic_Loading = null;
         }
+        private void Export()
+        {
+            DataTable DT = new DataTable();
+
+            foreach (DataColumn item in Data.Columns)
+                DT.Columns.Add(item.ColumnName, typeof(string));
+            foreach (DataRow item in Data.Rows)
+                DT.ImportRow(item);
+
+            DT.Columns[0].SetOrdinal(0);
+            DT.Columns[0].ColumnName = "ر.ق";
+
+            DT.Columns[1].SetOrdinal(1);
+            DT.Columns[1].ColumnName = "اسم المادة";
+
+            DT.Columns[2].SetOrdinal(2);
+            DT.Columns[2].ColumnName = "درجة اعمال السنة";
+
+            DT.Columns[3].SetOrdinal(3);
+            DT.Columns[3].ColumnName = "درجة النصفي";
+
+            DT.Columns[4].SetOrdinal(4);
+            DT.Columns[4].ColumnName = "درجة النهائي";
+
+            Helper.Export(DT, $"Degrees of Student {StudentID}");
+        }
+
 
         private void ConfigColumns()
         {
@@ -49,6 +77,11 @@ namespace SchoolManagment.GUI.StudentsGUI
         private void Btn_Close_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void Btn_Excel_Click(object sender, EventArgs e)
+        {
+            Export();
         }
     }
 }

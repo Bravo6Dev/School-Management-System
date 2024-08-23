@@ -4,6 +4,24 @@
     <Compile Update="Frm_Main.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="GUI\ClassesGUI\ClassesUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GUI\ClassesGUI\Frm_Add_Classes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\StudentsGUI\Add_Edit_InfoUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GUI\StudentsGUI\Edit_DegreeUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GUI\StudentsGUI\Frm_Add_Edit_Student.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\StudentsGUI\Frm_Show_Degrees.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="GUI\StudentsGUI\StudentUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

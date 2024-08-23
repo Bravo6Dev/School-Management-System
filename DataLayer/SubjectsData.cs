@@ -6,13 +6,14 @@ namespace DataLayer
 {
     public class SubjectsData
     {
-        static readonly string Connstr = "Server = .; Database = SchoolManagment; Integrated Security = true; TrustServerCertificate=True ; TrustServerCertificate=True";
         static public DataTable GetAll()
         {
             DataTable DT = new DataTable();
-            using (SqlConnection Conn = new SqlConnection(Connstr))
+            using (SqlConnection Conn = new SqlConnection(ConnStr.Connstr))
             {
-                string Query = "SELECT * FROM Subjects";
+                string Query = @"SELECT Subjects.ID, StudiedYear, SubjectName, GeneralMostGrade, MidTermMostGrade, FinalMidTerm, MostGrade, ClassYear
+                                 FROM Subjects
+                                 JOIN Classes ON Subjects.StudiedYear = Classes.ID";
                 Conn.Open();
                 using (SqlCommand cmd = new SqlCommand(Query, Conn))
                 {
@@ -25,14 +26,17 @@ namespace DataLayer
             return DT;
         }
 
-        static public int AddNew(string SubjectName, int GeneralMostGrade, int MidTermMostGrade, int FinalMidTerm, int MostGrade)
+        static public int AddNew(string SubjectName, int GeneralMostGrade, int MidTermMostGrade, 
+            int FinalMidTerm, int MostGrade, int StudiedYear)
         {
-            using (SqlConnection Conn = new SqlConnection(Connstr))
+            using (SqlConnection Conn = new SqlConnection(ConnStr.Connstr))
             {
                 string Query = @"INSERT INTO Subjects
-                                    ([SubjectName], [GeneralMostGrade], [MidTermMostGrade], [FinalMidTerm], [MostGrade])
+                                    ([SubjectName], [GeneralMostGrade], [MidTermMostGrade], 
+                                     [FinalMidTerm], [MostGrade], [StudiedYear])
                                      VALUES
-                                     (@SubjectName, @GeneralMostGrade, @MidTermMostGrade, @FinalMidTerm, @MostGrade);
+                                     (@SubjectName, @GeneralMostGrade, @MidTermMostGrade, 
+                                      @FinalMidTerm, @MostGrade, @StudiedYear);
                                      SELECT SCOPE_IDENTITY();";
 
                 Conn.Open();
@@ -43,6 +47,8 @@ namespace DataLayer
                     cmd.Parameters.AddWithValue("@MidTermMostGrade", MidTermMostGrade);
                     cmd.Parameters.AddWithValue("@FinalMidTerm", FinalMidTerm);
                     cmd.Parameters.AddWithValue("@MostGrade", MostGrade);
+                    cmd.Parameters.AddWithValue("@StudiedYear", StudiedYear);
+
                     object result = cmd.ExecuteScalar();
                     if (result != null && int.TryParse(result.ToString(), out int ID)) { return ID; }
                     return -1;
@@ -54,7 +60,7 @@ namespace DataLayer
         {
             try
             {
-                using (SqlConnection Conn = new SqlConnection(Connstr))
+                using (SqlConnection Conn = new SqlConnection(ConnStr.Connstr))
                 {
                     string Query = @"DELETE FROM Subjects
                                         WHERE ID = @ID";
@@ -77,9 +83,10 @@ namespace DataLayer
             }
         }
 
-        static public bool Update(int ID, string SubjectName, int GeneralMostGrade, int MidTermMostGrade, int FinalMidTerm, int MostGrade)
+        static public bool Update(int ID, string SubjectName, int GeneralMostGrade, 
+            int MidTermMostGrade, int FinalMidTerm, int MostGrade, int StudiedYear)
         {
-            using (SqlConnection Conn = new SqlConnection(Connstr))
+            using (SqlConnection Conn = new SqlConnection(ConnStr.Connstr))
             {
                 string Query = @"UPDATE [Subjects]
                                    SET [SubjectName] = @SubjectName
@@ -87,6 +94,7 @@ namespace DataLayer
                                       ,[MidTermMostGrade] = @MidTermMostGrade
                                       ,[FinalMidTerm] = @FinalMidTerm
                                       ,[MostGrade] = @MostGrade
+                                      ,[StudiedYear] = @StudiedYear
 
                                     WHERE [ID] = @ID";
                 Conn.Open();
@@ -98,14 +106,16 @@ namespace DataLayer
                     cmd.Parameters.AddWithValue("@MidTermMostGrade", MidTermMostGrade);
                     cmd.Parameters.AddWithValue("@FinalMidTerm", FinalMidTerm);
                     cmd.Parameters.AddWithValue("@MostGrade", MostGrade);
+                    cmd.Parameters.AddWithValue("@StudiedYear", StudiedYear);
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }
         }
 
-        static public bool Find(int ID, ref string SubjectName, ref int GeneralMostGrade, ref int MidTermMostGrade, ref int FinalMidTerm, ref int MostGrade)
+        static public bool Find(int ID, ref string SubjectName, ref int GeneralMostGrade, ref int MidTermMostGrade, 
+            ref int FinalMidTerm, ref int MostGrade, ref int StudiedYear)
         {
-            using (SqlConnection Conn = new SqlConnection(Connstr))
+            using (SqlConnection Conn = new SqlConnection(ConnStr.Connstr))
             {
                 string Query = @"SELECT * FROM Subjects
                                     WHERE [ID] = @ID";
@@ -122,7 +132,7 @@ namespace DataLayer
                             MidTermMostGrade = Convert.ToInt32(Reader["MidTermMostGrade"]);
                             FinalMidTerm = Convert.ToInt32(Reader["FinalMidTerm"]);
                             MostGrade = Convert.ToInt32(Reader["MostGrade"]);
-
+                            StudiedYear = Convert.ToInt32(Reader["StudiedYear"]);
                         }
                         return true;
                     }

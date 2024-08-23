@@ -76,3 +76,10 @@ C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagmen
 C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.GUI.SubjectsGUI.SubjectsUserControl.resources
 C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.GUI.SubjectsGUI.Frm_Add_Edit_Subjects.resources
 C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.GUI.StudentsGUI.StudentUserControl.resources
+C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.sourcelink.json
+C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.GUI.StudentsGUI.Add_Edit_InfoUserControl.resources
+C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.GUI.StudentsGUI.Frm_Add_Edit_Student.resources
+C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.GUI.StudentsGUI.Edit_DegreeUserControl.resources
+C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.GUI.StudentsGUI.Frm_Show_Degrees.resources
+C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.GUI.ClassesGUI.ClassesUserControl.resources
+C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.GUI.ClassesGUI.Frm_Add_Classes.resources

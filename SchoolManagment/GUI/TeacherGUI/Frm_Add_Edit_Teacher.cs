@@ -33,7 +33,8 @@ namespace SchoolManagment.GUI.TeacherGUI
             cmb_Subject.DataSource = await Task.Run(() => Subjects.GetAll());
             cmb_Subject.ValueMember = "ID";
             cmb_Subject.DisplayMember = "SubjectName";
-            cmb_Subject.SelectedIndex = 0;
+            if (cmb_Subject.Items.Count > 0)
+                cmb_Subject.SelectedIndex = 0;
             Txt_SubName.Text = cmb_Subject.Text;
         }
 
@@ -102,7 +103,7 @@ namespace SchoolManagment.GUI.TeacherGUI
             Teacher.Address = string.IsNullOrEmpty(Txt_Address.Text.Trim()) ?
                 null : Txt_Address.Text.Trim();
 
-            Teacher.Phone = string.IsNullOrEmpty(Txt_Phone.Text.Trim())?
+            Teacher.Phone = string.IsNullOrEmpty(Txt_Phone.Text.Trim()) ?
                 null : Txt_Phone.Text.Trim();
 
             Teacher.EductionalOutcome = Txt_EductionOutcome.Text.Trim();
@@ -126,7 +127,6 @@ namespace SchoolManagment.GUI.TeacherGUI
             Txt_Phone.Clear();
             Txt_EductionOutcome.Clear();
             Txt_Address.Clear();
-            Txt_SubName.Clear();
             Txt_Name.Focus();
         }
 
@@ -181,6 +181,16 @@ namespace SchoolManagment.GUI.TeacherGUI
         private void cmb_Subject_SelectedIndexChanged(object sender, EventArgs e)
         {
             Txt_SubName.Text = cmb_Subject.Text;
+        }
+
+        private void Txt_Phone_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Helper.ValidPhoneNumber(Txt_Phone.Text.Trim()))
+            {
+                Messages.UnvalidMessage();
+                Txt_Phone.SelectAll();
+                Txt_Phone.Focus();
+            }
         }
     }
 }

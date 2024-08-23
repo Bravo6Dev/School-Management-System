@@ -9,7 +9,7 @@ namespace SchoolManagment.Codes
     /// <summary>
     /// Detected Where You Call The Class.
     /// </summary>
-    public enum Data { Teacher, Student, Subject, Classes, Results }
+    public enum Data { Teacher, Student, Subject, Classes, Results, SubjectResult }
     public static class Messages
     {
         public static void ErrorMessage(Exception ex)
@@ -72,8 +72,29 @@ namespace SchoolManagment.Codes
                     MessageBox.Show("اسم المادة موجود بالفعل", "خطــأ",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
-
+                case Data.SubjectResult:
+                    MessageBox.Show("تمت اضافة درجات لهذه المادة بالفعل", "خطــأ",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
             }
+        }
+
+        public static void NotFoundMessage()
+        {
+            MessageBox.Show("عذرا, لم يتم العثور على البيانات", "خطــأ",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public static void FullClassMessage()
+        {
+            MessageBox.Show("هذا الفصل ممتلئ الرجاء اختيار فصل اخر", "خطــأ",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public static void UnvalidMessage()
+        {
+            MessageBox.Show("الرجاء ادخال بيانات صحيحة", "خطــأ",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

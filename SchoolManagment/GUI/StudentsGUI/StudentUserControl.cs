@@ -72,15 +72,12 @@ namespace SchoolManagment.GUI.StudentsGUI
                     Data.DefaultView.RowFilter = $"FullName LIKE '%{Txt_Search.Text.Trim()}%'";
                     break;
                 case 2:
-                    Data.DefaultView.RowFilter = $"Address LIKE '%{Txt_Search.Text.Trim()}%'";
-                    break;
-                case 3:
                     Data.DefaultView.RowFilter = $"Phone LIKE '%{Txt_Search.Text.Trim()}%'";
                     break;
             }
             if (Txt_Search.Text == string.Empty || cmb_Filter.SelectedIndex == 0)
                 Data.DefaultView.RowFilter = string.Empty;
-            //dgv_Subjects.DataSource = Data;
+            dgv_Student.DataSource = Data;
         }
 
         private async void Edit()
@@ -90,8 +87,8 @@ namespace SchoolManagment.GUI.StudentsGUI
                 int Id = dgv_Student.CurrentRow == null ?
                     (int)dgv_Student.Rows[0].Cells[0].Value :
                     (int)dgv_Student.CurrentRow.Cells[0].Value;
-                //Frm_Add_Edit_Teacher Frm = new Frm_Add_Edit_Teacher(Id);
-                //Frm.ShowDialog();
+                Frm_Add_Edit_Student Frm = new Frm_Add_Edit_Student(Id);
+                Frm.ShowDialog();
                 LoadData();
             }
         }
@@ -120,17 +117,80 @@ namespace SchoolManagment.GUI.StudentsGUI
             DT.Columns[4].SetOrdinal(4);
             DT.Columns[4].ColumnName = "رقم الهاتف";
 
-            DT.Columns.Remove("ClassID");
+            DT.Columns.Remove("StudiedYear");
 
             Helper.Export(DT, "Students");
         }
 
         public StudentUserControl()
         {
-            
+
             InitializeComponent();
             Data = new DataTable();
             LoadData();
+        }
+
+        private void Btn_teachers_Click(object sender, EventArgs e)
+        {
+            Frm_Add_Edit_Student Frm = new Frm_Add_Edit_Student();
+            Frm.ShowDialog();
+            LoadData();
+        }
+
+        private void Btn_Edit_Click(object sender, EventArgs e)
+        {
+            Edit();
+        }
+
+        private void Btn_Delete_Click(object sender, EventArgs e)
+        {
+            if (dgv_Student.Rows.Count > 0)
+            {
+                int Id = dgv_Student.CurrentRow == null ?
+                    (int)dgv_Student.Rows[0].Cells[0].Value :
+                    (int)dgv_Student.CurrentRow.Cells[0].Value;
+                if (Messages.Ask("هل انت متأكد انك تريد حذف هذا الطالب") == DialogResult.Yes)
+                {
+                    if (Students.Delete(Id))
+                    {
+                        Messages.DeleteMessage(true);
+                        LoadData();
+                    }
+                    else
+                        Messages.DeleteMessage(false);
+                }
+            }
+        }
+
+        private void Btn_Excel_Click(object sender, EventArgs e)
+        {
+            Export();
+        }
+
+        private void Txt_Search_TextChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void Btn_Degree_Click(object sender, EventArgs e)
+        {
+            if (dgv_Student.Rows.Count > 0)
+            {
+                int ID = dgv_Student.CurrentRow == null ?
+                    (int)dgv_Student.Rows[0].Cells[0].Value :
+                    (int)dgv_Student.CurrentRow.Cells[0].Value;
+                Frm_Show_Degrees Frm = new Frm_Show_Degrees(ID);
+                Frm.ShowDialog();
+            }
+        }
+
+        private void cmb_Filter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmb_Filter.SelectedIndex == 0)
+            {
+                Data.DefaultView.RowFilter = "";
+                Txt_Search.Clear();
+            }
         }
     }
 }

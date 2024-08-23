@@ -2,6 +2,8 @@ using System;
 using DataLayer;
 using System.Data
 ;
+using System.Linq;
+using System.Collections.Generic;
 namespace BuisnessLayer
 {
     public class Students
@@ -15,6 +17,9 @@ namespace BuisnessLayer
         public string Address { get; set; }
         public string Phone { get; set; }
         public int ClassID { get; set; }
+
+        public Classes Class { get; set; }
+
         public Students()
         {
             Mode = enMode.AddNew;
@@ -28,6 +33,7 @@ namespace BuisnessLayer
             this.Address = Address;
             this.Phone = Phone;
             this.ClassID = ClassID;
+            this.Class = Classes.GetById(ClassID);
 
             Mode = enMode.Update;
         }
@@ -40,8 +46,15 @@ namespace BuisnessLayer
 
         static public DataTable GetAll()
         {
-            DataTable dt = StudentsData.GetAll();
-            return dt;
+            try
+            {
+                DataTable dt = StudentsData.GetAll();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private bool Update()
@@ -62,6 +75,37 @@ namespace BuisnessLayer
 
             return StudentsData.Find(ID, ref FullName, ref DOB, ref Address, ref Phone, ref ClassID) ?
                 new Students(ID, FullName, DOB, Address, Phone, ClassID) : null;
+        }
+
+        public bool Save()
+        {
+            switch (Mode)
+            {
+                case enMode.AddNew:
+                    if (AddNew())
+                    {
+                        Mode = enMode.Update;
+                        return true;
+                    }
+                    else return false;
+                case enMode.Update:
+                    return Update();
+            }
+            return false; 
+        }
+
+        public bool IsDuplicate()
+        {
+            DataTable DT = GetAll();
+            return DT.AsEnumerable()
+                .Count(R => R.Field<string>("FullName") == FullName) > 0;
+        }
+
+        public static DataTable GetAll(int ClassID)
+        {
+            return GetAll().AsEnumerable()
+                .Where(R => R.Field<int>("StudiedYear") == ClassID)
+                .CopyToDataTable();
         }
 
     }

@@ -39,9 +39,7 @@ namespace SchoolManagment.GUI.StudentsGUI
             }
 
             if (StudentResult.Save())
-            {
                 Messages.AddNewMessage(true);
-            }
             else
                 Messages.AddNewMessage(false);
         }
@@ -60,7 +58,7 @@ namespace SchoolManagment.GUI.StudentsGUI
             StudentResult.FinalTermGrade = (int)numeric_FinalTermGrade.Value;
             StudentResult.MidTermGrade = (int)numeric_MidTermGrade.Value;
 
-            if (Student.Save())
+            if (StudentResult.Save())
                 Messages.UpdateMessage(true);
             else
                 Messages.UpdateMessage(false);

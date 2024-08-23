@@ -11,3 +11,4 @@ C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\BuisnessLayer\
 C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\BuisnessLayer\obj\Debug\netstandard2.0\BuisnessLayer.csproj.CopyComplete
 C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\BuisnessLayer\obj\Debug\netstandard2.0\BuisnessLayer.dll
 C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\BuisnessLayer\obj\Debug\netstandard2.0\BuisnessLayer.pdb
+C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\BuisnessLayer\obj\Debug\netstandard2.0\BuisnessLayer.sourcelink.json
