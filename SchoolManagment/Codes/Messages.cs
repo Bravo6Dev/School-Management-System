@@ -9,7 +9,7 @@ namespace SchoolManagment.Codes
     /// <summary>
     /// Detected Where You Call The Class.
     /// </summary>
-    public enum Data { Teacher, Student, Subject, Classes, Results, SubjectResult }
+    public enum Data { Teacher, Student, Subject, Classes, Results, SubjectResult, AcademicYear }
     public static class Messages
     {
         public static void ErrorMessage(Exception ex)
@@ -74,6 +74,10 @@ namespace SchoolManagment.Codes
                     break;
                 case Data.SubjectResult:
                     MessageBox.Show("تمت اضافة درجات لهذه المادة بالفعل", "خطــأ",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                case Data.AcademicYear:
+                    MessageBox.Show("السنة الدراسية موجودة بالفعل", "خطــأ",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }

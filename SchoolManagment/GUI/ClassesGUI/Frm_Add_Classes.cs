@@ -1,4 +1,5 @@
 ﻿using BuisnessLayer;
+using DataLayer;
 using SchoolManagment.Codes;
 using System;
 using System.Collections.Generic;
@@ -16,15 +17,25 @@ namespace SchoolManagment.GUI.ClassesGUI
     {
         Classes Class;
 
+        private async void LoadAcademicYear()
+        {
+            cmb_AcademicYear.DataSource = await Task.Run(() => AcademicYears.GetAll());
+            cmb_AcademicYear.ValueMember = "ID";
+            cmb_AcademicYear.DisplayMember = "StudiedYear";
+
+            if (cmb_AcademicYear.Items.Count > 0)
+                cmb_AcademicYear.SelectedIndex = 0;
+        }
+
         private bool Valid() =>
-            !(string.IsNullOrEmpty(Txt_Name.Text) || string.IsNullOrEmpty(Txt_Year.Text));
+            !(string.IsNullOrEmpty(Txt_Name.Text));
 
         private void AddNew()
         {
             Class = new Classes()
             {
                 ClassName = Txt_Name.Text.Trim(),
-                //ClassYear = Txt_Year.Text.Trim(),
+                AcademicYearID = (int)cmb_AcademicYear.SelectedValue!,
                 Capacity = (int)numeric_Capicity.Value,
             };
             if (Class.Save())
@@ -39,8 +50,8 @@ namespace SchoolManagment.GUI.ClassesGUI
         private void Clear()
         {
             Txt_Name.Clear();
-            Txt_Year.Clear();
             numeric_Capicity.Value = numeric_Capicity.Minimum;
+            cmb_AcademicYear.SelectedIndex = 0;
             Txt_Name.Focus();
         }
 
@@ -58,6 +69,7 @@ namespace SchoolManagment.GUI.ClassesGUI
         public Frm_Add_Classes()
         {
             InitializeComponent();
+            LoadAcademicYear();
         }
 
         private void Btn_Close_Click(object sender, EventArgs e)

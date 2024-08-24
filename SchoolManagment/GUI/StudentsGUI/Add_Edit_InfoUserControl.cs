@@ -52,7 +52,7 @@ namespace SchoolManagment.GUI.StudentsGUI
                 return;
             }
             Txt_ClassName.Text = Class.ClassName;
-            //Txt_ClassYear.Text = Class.ClassYear;
+            Txt_ClassYear.Text = Class.AcademicYear.AcademicYearName;
         }
 
         /// <summary>
@@ -198,12 +198,17 @@ namespace SchoolManagment.GUI.StudentsGUI
 
         private void Txt_Phone_Validating(object sender, CancelEventArgs e)
         {
-            if (!Helper.ValidPhoneNumber(Txt_Phone.Text.Trim())) 
+            if (!Helper.ValidPhoneNumber(Txt_Phone.Text.Trim()))
             {
                 Messages.UnvalidMessage();
                 Txt_Phone.SelectAll();
                 Txt_Phone.Focus();
             }
+        }
+
+        private void cmb_Class_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -12,14 +12,15 @@ namespace BuisnessLayer
 
         public int ID { get; set; }
         public string ClassName { get; set; }
-        public int StudiedYearID { get; set; }
+        public int AcademicYearID { get; set; }
+        public AcademicYears AcademicYear { get; }
         public int Capacity { get; set; }
 
         public Classes()
         {
             ID = 0;
             ClassName = string.Empty;
-            StudiedYearID = 0;
+            AcademicYearID = 0;
             Capacity = 0;
             Mode = enMode.AddNew;
         }
@@ -28,15 +29,16 @@ namespace BuisnessLayer
         {
             this.ID = ID;
             this.ClassName = ClassName;
-            this.StudiedYearID = ClassYear;
+            this.AcademicYearID = ClassYear;
             this.Capacity = Capicity;
+            this.AcademicYear = AcademicYears.GetById(ID);
 
             Mode = enMode.Update;
         }
 
         private bool AddNew()
         {
-            ID = ClassesData.AddNew(ClassName, StudiedYearID, Capacity);
+            ID = ClassesData.AddNew(ClassName, AcademicYearID, Capacity);
             return ID != -1;
         }
 
@@ -48,7 +50,7 @@ namespace BuisnessLayer
 
         private bool Update()
         {
-            return ClassesData.Update(ID, ClassName, StudiedYearID, Capacity);
+            return ClassesData.Update(ID, ClassName, AcademicYearID, Capacity);
         }
 
         static public bool Delete(int ID)
@@ -66,7 +68,7 @@ namespace BuisnessLayer
         public bool Full()
         {
             return Students.GetAll().AsEnumerable().
-                Count(R => R.Field<int>("StudiedYear") == ID) == Capacity;
+                Count(R => R.Field<int>("ClassID") == ID) == Capacity;
         }
 
         public bool Save()

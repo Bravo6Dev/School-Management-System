@@ -241,6 +241,7 @@
             cmb_Class.Name = "cmb_Class";
             cmb_Class.Size = new Size(218, 29);
             cmb_Class.TabIndex = 111;
+            cmb_Class.SelectedIndexChanged += cmb_Class_SelectedIndexChanged;
             // 
             // Txt_ClassName
             // 

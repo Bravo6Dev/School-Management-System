@@ -24,7 +24,7 @@ namespace BuisnessLayer
         }
         public int StudiedYear { get; set; }
 
-        public StudeiedYearsData Class { get; set; }
+        public AcademicYearData Class { get; set; }
 
 
         public Subjects()

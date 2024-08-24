@@ -37,6 +37,7 @@
             button3 = new Button();
             button4 = new Button();
             button5 = new Button();
+            Btn_AcademicYears = new Button();
             Panel_Container = new Panel();
             panel1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -73,6 +74,7 @@
             flowLayoutPanel1.Controls.Add(button3);
             flowLayoutPanel1.Controls.Add(button4);
             flowLayoutPanel1.Controls.Add(button5);
+            flowLayoutPanel1.Controls.Add(Btn_AcademicYears);
             flowLayoutPanel1.Dock = DockStyle.Bottom;
             flowLayoutPanel1.Location = new Point(0, 569);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -149,10 +151,10 @@
             button3.ForeColor = Color.White;
             button3.Image = Properties.Resources.training;
             button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(457, 10);
+            button3.Location = new Point(478, 10);
             button3.Margin = new Padding(5, 5, 10, 5);
             button3.Name = "button3";
-            button3.Size = new Size(129, 50);
+            button3.Size = new Size(108, 50);
             button3.TabIndex = 5;
             button3.Text = "الحصص";
             button3.TextAlign = ContentAlignment.MiddleLeft;
@@ -168,10 +170,10 @@
             button4.ForeColor = Color.White;
             button4.Image = Properties.Resources.classroom;
             button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(313, 10);
+            button4.Location = new Point(361, 10);
             button4.Margin = new Padding(5, 5, 10, 5);
             button4.Name = "button4";
-            button4.Size = new Size(129, 50);
+            button4.Size = new Size(102, 50);
             button4.TabIndex = 6;
             button4.Text = "الفصول";
             button4.TextAlign = ContentAlignment.MiddleLeft;
@@ -188,15 +190,35 @@
             button5.ForeColor = Color.White;
             button5.Image = Properties.Resources.report_card;
             button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(169, 10);
+            button5.Location = new Point(224, 10);
             button5.Margin = new Padding(5, 5, 10, 5);
             button5.Name = "button5";
-            button5.Size = new Size(129, 50);
+            button5.Size = new Size(122, 50);
             button5.TabIndex = 7;
             button5.Text = "نتائج الطلبة";
             button5.TextAlign = ContentAlignment.MiddleLeft;
             button5.TextImageRelation = TextImageRelation.ImageBeforeText;
             button5.UseVisualStyleBackColor = false;
+            // 
+            // Btn_AcademicYears
+            // 
+            Btn_AcademicYears.BackColor = Color.FromArgb(59, 130, 246);
+            Btn_AcademicYears.Cursor = Cursors.Hand;
+            Btn_AcademicYears.FlatAppearance.BorderSize = 0;
+            Btn_AcademicYears.FlatStyle = FlatStyle.Flat;
+            Btn_AcademicYears.ForeColor = Color.White;
+            Btn_AcademicYears.Image = Properties.Resources.report_card;
+            Btn_AcademicYears.ImageAlign = ContentAlignment.MiddleLeft;
+            Btn_AcademicYears.Location = new Point(60, 10);
+            Btn_AcademicYears.Margin = new Padding(5, 5, 10, 5);
+            Btn_AcademicYears.Name = "Btn_AcademicYears";
+            Btn_AcademicYears.Size = new Size(149, 50);
+            Btn_AcademicYears.TabIndex = 8;
+            Btn_AcademicYears.Text = "سنوات الدراسة";
+            Btn_AcademicYears.TextAlign = ContentAlignment.MiddleLeft;
+            Btn_AcademicYears.TextImageRelation = TextImageRelation.ImageBeforeText;
+            Btn_AcademicYears.UseVisualStyleBackColor = false;
+            Btn_AcademicYears.Click += Btn_AcademicYears_Click;
             // 
             // Panel_Container
             // 
@@ -240,5 +262,6 @@
         private Button button4;
         private Button button5;
         public Panel Panel_Container;
+        private Button Btn_AcademicYears;
     }
 }

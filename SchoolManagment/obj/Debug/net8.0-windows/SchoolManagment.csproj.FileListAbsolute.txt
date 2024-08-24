@@ -83,3 +83,4 @@ C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagmen
 C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.GUI.StudentsGUI.Frm_Show_Degrees.resources
 C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.GUI.ClassesGUI.ClassesUserControl.resources
 C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.GUI.ClassesGUI.Frm_Add_Classes.resources
+C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.GUI.AcademicYearUserControl.resources

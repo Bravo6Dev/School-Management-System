@@ -41,7 +41,7 @@
             label6 = new Label();
             numeric_Capicity = new NumericUpDown();
             groupBox1 = new GroupBox();
-            cmb_StudiedYear = new ComboBox();
+            cmb_AcademicYear = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numeric_Capicity).BeginInit();
             groupBox1.SuspendLayout();
@@ -187,7 +187,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(cmb_StudiedYear);
+            groupBox1.Controls.Add(cmb_AcademicYear);
             groupBox1.Controls.Add(numeric_Capicity);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label5);
@@ -204,13 +204,14 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "معلومات الفصل";
             // 
-            // cmb_StudiedYear
+            // cmb_AcademicYear
             // 
-            cmb_StudiedYear.FormattingEnabled = true;
-            cmb_StudiedYear.Location = new Point(165, 165);
-            cmb_StudiedYear.Name = "cmb_StudiedYear";
-            cmb_StudiedYear.Size = new Size(213, 29);
-            cmb_StudiedYear.TabIndex = 102;
+            cmb_AcademicYear.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmb_AcademicYear.FormattingEnabled = true;
+            cmb_AcademicYear.Location = new Point(165, 165);
+            cmb_AcademicYear.Name = "cmb_AcademicYear";
+            cmb_AcademicYear.Size = new Size(213, 29);
+            cmb_AcademicYear.TabIndex = 102;
             // 
             // Frm_Add_Classes
             // 
@@ -253,6 +254,6 @@
         private Label label6;
         private NumericUpDown numeric_Capicity;
         private GroupBox groupBox1;
-        private ComboBox cmb_StudiedYear;
+        private ComboBox cmb_AcademicYear;
     }
 }

@@ -72,11 +72,11 @@
             Btn_teachers.ForeColor = Color.White;
             Btn_teachers.Image = Properties.Resources.add;
             Btn_teachers.ImageAlign = ContentAlignment.MiddleLeft;
-            Btn_teachers.Location = new Point(908, 10);
+            Btn_teachers.Location = new Point(930, 10);
             Btn_teachers.Margin = new Padding(5, 5, 10, 5);
             Btn_teachers.Name = "Btn_teachers";
             Btn_teachers.Padding = new Padding(3);
-            Btn_teachers.Size = new Size(110, 43);
+            Btn_teachers.Size = new Size(88, 43);
             Btn_teachers.TabIndex = 2;
             Btn_teachers.Text = "اضافة";
             Btn_teachers.TextAlign = ContentAlignment.MiddleLeft;
@@ -94,11 +94,11 @@
             Btn_Delete.ForeColor = Color.White;
             Btn_Delete.Image = Properties.Resources.bin;
             Btn_Delete.ImageAlign = ContentAlignment.MiddleLeft;
-            Btn_Delete.Location = new Point(783, 10);
+            Btn_Delete.Location = new Point(828, 10);
             Btn_Delete.Margin = new Padding(5, 5, 10, 5);
             Btn_Delete.Name = "Btn_Delete";
             Btn_Delete.Padding = new Padding(3);
-            Btn_Delete.Size = new Size(110, 43);
+            Btn_Delete.Size = new Size(87, 43);
             Btn_Delete.TabIndex = 4;
             Btn_Delete.Text = "حذف";
             Btn_Delete.TextAlign = ContentAlignment.MiddleLeft;
@@ -116,13 +116,13 @@
             Btn_ShowStudents.ForeColor = Color.White;
             Btn_ShowStudents.Image = Properties.Resources.graduated;
             Btn_ShowStudents.ImageAlign = ContentAlignment.MiddleLeft;
-            Btn_ShowStudents.Location = new Point(626, 10);
+            Btn_ShowStudents.Location = new Point(715, 10);
             Btn_ShowStudents.Margin = new Padding(5, 5, 10, 5);
             Btn_ShowStudents.Name = "Btn_ShowStudents";
             Btn_ShowStudents.Padding = new Padding(3);
-            Btn_ShowStudents.Size = new Size(142, 43);
+            Btn_ShowStudents.Size = new Size(98, 43);
             Btn_ShowStudents.TabIndex = 6;
-            Btn_ShowStudents.Text = "عرض الطلبة";
+            Btn_ShowStudents.Text = "الطلبة";
             Btn_ShowStudents.TextAlign = ContentAlignment.MiddleLeft;
             Btn_ShowStudents.TextImageRelation = TextImageRelation.ImageBeforeText;
             Btn_ShowStudents.UseVisualStyleBackColor = false;
@@ -131,7 +131,7 @@
             // 
             panel1.Controls.Add(cmb_Filter);
             panel1.Controls.Add(Txt_Search);
-            panel1.Location = new Point(129, 12);
+            panel1.Location = new Point(218, 12);
             panel1.Margin = new Padding(6, 7, 13, 7);
             panel1.Name = "panel1";
             panel1.Size = new Size(481, 41);

@@ -1,4 +1,5 @@
 using SchoolManagment.Codes;
+using SchoolManagment.GUI;
 using SchoolManagment.GUI.ClassesGUI;
 using SchoolManagment.GUI.StudentsGUI;
 using SchoolManagment.GUI.SubjectsGUI;
@@ -40,6 +41,11 @@ namespace SchoolManagment
         private void button4_Click(object sender, EventArgs e)
         {
             Pages.SetPages(ClassesUserControl.Instance);
+        }
+
+        private void Btn_AcademicYears_Click(object sender, EventArgs e)
+        {
+            Pages.SetPages(AcademicYearUserControl.Instance);
         }
     }
 }

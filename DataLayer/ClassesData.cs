@@ -12,10 +12,11 @@ namespace DataLayer
             DataTable DT = new DataTable();
             using (SqlConnection Conn = new SqlConnection(ConnStr.Connstr))
             {
-                string Query = @"SELECT Classes.ID, ClassName, ClassYear, COUNT(Students.ID) AS ClassMembers, Capacity
+                string Query = @"SELECT Classes.ID, ClassName, StudiedYears.StudiedYear, COUNT(Students.ID) AS ClassMembers, Capacity
                                  FROM Classes
                                  LEFT JOIN Students ON Students.ClassID = Classes.ID 
-                                 GROUP BY Classes.ID, ClassName, ClassYear, Classes.Capacity";
+                                 JOIN StudiedYears ON StudiedYears.ID = Classes.StudiedYearID
+                                 GROUP BY Classes.ID, ClassName, StudiedYears.StudiedYear, Classes.Capacity";
                 Conn.Open();
                 using (SqlCommand cmd = new SqlCommand(Query, Conn))
                 {
