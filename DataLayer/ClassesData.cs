@@ -1,12 +1,11 @@
 using System;
 using System.Data;
-
+using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 namespace DataLayer
 {
     public class ClassesData
     {
-        
         static public DataTable GetAll()
         {
             DataTable DT = new DataTable();
@@ -21,6 +20,28 @@ namespace DataLayer
                 using (SqlCommand cmd = new SqlCommand(Query, Conn))
                 {
                     using (SqlDataReader Reader = cmd.ExecuteReader())
+                    {
+                        DT.Load(Reader);
+                    }
+                }
+            }
+            return DT;
+        }
+
+        static public async Task<DataTable> GetAllAsync()
+        {
+            DataTable DT = new DataTable();
+            using (SqlConnection Conn = new SqlConnection(ConnStr.Connstr))
+            {
+                string Query = @"SELECT Classes.ID, ClassName, StudiedYears.StudiedYear, COUNT(Students.ID) AS ClassMembers, Capacity
+                                 FROM Classes
+                                 LEFT JOIN Students ON Students.ClassID = Classes.ID 
+                                 JOIN StudiedYears ON StudiedYears.ID = Classes.StudiedYearID
+                                 GROUP BY Classes.ID, ClassName, StudiedYears.StudiedYear, Classes.Capacity";
+                await Conn.OpenAsync();
+                using (SqlCommand cmd = new SqlCommand(Query, Conn))
+                {
+                    using (SqlDataReader Reader = await cmd.ExecuteReaderAsync())
                     {
                         DT.Load(Reader);
                     }

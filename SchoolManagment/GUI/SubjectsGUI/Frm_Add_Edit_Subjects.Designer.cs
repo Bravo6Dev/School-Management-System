@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             Btn_Clear = new Button();
-            cmb_Classes = new ComboBox();
+            cmb_StudiedYear = new ComboBox();
             numeric_MidTermGrade = new NumericUpDown();
             label6 = new Label();
             numeric_FinalTermGrade = new NumericUpDown();
@@ -72,14 +72,15 @@
             Btn_Clear.TextImageRelation = TextImageRelation.ImageBeforeText;
             Btn_Clear.UseVisualStyleBackColor = false;
             // 
-            // cmb_Classes
+            // cmb_StudiedYear
             // 
-            cmb_Classes.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmb_Classes.FormattingEnabled = true;
-            cmb_Classes.Location = new Point(187, 162);
-            cmb_Classes.Name = "cmb_Classes";
-            cmb_Classes.Size = new Size(225, 29);
-            cmb_Classes.TabIndex = 102;
+            cmb_StudiedYear.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmb_StudiedYear.FormattingEnabled = true;
+            cmb_StudiedYear.Location = new Point(187, 162);
+            cmb_StudiedYear.Name = "cmb_StudiedYear";
+            cmb_StudiedYear.Size = new Size(225, 29);
+            cmb_StudiedYear.TabIndex = 102;
+            cmb_StudiedYear.SelectedIndexChanged += cmb_Classes_SelectedIndexChanged;
             // 
             // numeric_MidTermGrade
             // 
@@ -155,6 +156,7 @@
             Btn_Close.Size = new Size(34, 31);
             Btn_Close.TabIndex = 0;
             Btn_Close.UseVisualStyleBackColor = true;
+            Btn_Close.Click += Btn_Close_Click_1;
             // 
             // panel1
             // 
@@ -264,10 +266,11 @@
             Btn_Save.Text = "حفظ";
             Btn_Save.TextImageRelation = TextImageRelation.ImageBeforeText;
             Btn_Save.UseVisualStyleBackColor = false;
+            Btn_Save.Click += Btn_Save_Click;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(cmb_Classes);
+            groupBox1.Controls.Add(cmb_StudiedYear);
             groupBox1.Controls.Add(numeric_MidTermGrade);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(numeric_FinalTermGrade);
@@ -322,7 +325,7 @@
         #endregion
 
         private Button Btn_Clear;
-        private ComboBox cmb_Classes;
+        private ComboBox cmb_StudiedYear;
         private NumericUpDown numeric_MidTermGrade;
         private Label label6;
         private NumericUpDown numeric_FinalTermGrade;

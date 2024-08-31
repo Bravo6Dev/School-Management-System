@@ -84,3 +84,5 @@ C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagmen
 C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.GUI.ClassesGUI.ClassesUserControl.resources
 C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.GUI.ClassesGUI.Frm_Add_Classes.resources
 C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.GUI.AcademicYearUserControl.resources
+C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.GUI.SessionsGUI.SessionsUserControl.resources
+C:\Users\DELL\Desktop\Projects\Desktop_App\SchoolManagementSystem\SchoolManagment\obj\Debug\net8.0-windows\SchoolManagment.GUI.SessionsGUI.Frm_Add_Edit_Sessions.resources

@@ -81,7 +81,7 @@ namespace SchoolManagment.GUI.StudentsGUI
         /// Check If Any Required Fields Doesn't Filled
         /// </summary>
         private bool Valid()
-        => !string.IsNullOrEmpty(Txt_Name.Text);
+        => !(string.IsNullOrEmpty(Txt_Name.Text) || cmb_Class.SelectedIndex == -1);
 
         private void AddNew()
         {
@@ -200,7 +200,7 @@ namespace SchoolManagment.GUI.StudentsGUI
         {
             if (!Helper.ValidPhoneNumber(Txt_Phone.Text.Trim()))
             {
-                Messages.UnvalidMessage();
+                Messages.InvalidMessage();
                 Txt_Phone.SelectAll();
                 Txt_Phone.Focus();
             }

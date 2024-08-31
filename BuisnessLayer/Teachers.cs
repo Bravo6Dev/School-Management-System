@@ -22,6 +22,7 @@ namespace BuisnessLayer
         public string Phone { get; set; }
         public string Address { get; set; }
         public int SubjectID { get; set; }
+        public Subjects Subject { get; set; }
 
         /// <summary>
         /// The Constructor Called In AddNew Mode
@@ -41,6 +42,7 @@ namespace BuisnessLayer
             this.Phone = Phone;
             this.Address = Address;
             this.SubjectID = SubjectID;
+            Subject = Subjects.GetById(SubjectID);
 
             Mode = enMode.Update;
         }

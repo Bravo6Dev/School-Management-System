@@ -11,9 +11,9 @@ namespace DataLayer
             DataTable DT = new DataTable();
             using (SqlConnection Conn = new SqlConnection(ConnStr.Connstr))
             {
-                string Query = @"SELECT Subjects.ID, StudiedYear, SubjectName, GeneralMostGrade, MidTermMostGrade, FinalMidTerm, MostGrade, ClassYear
+                string Query = @"SELECT Subjects.ID, StudiedYearID,SubjectName,GeneralMostGrade, MidTermMostGrade, FinalMidTerm, MostGrade, StudiedYears.StudiedYear
                                  FROM Subjects
-                                 JOIN Classes ON Subjects.StudiedYear = Classes.ID";
+                                 JOIN StudiedYears ON Subjects.StudiedYearID = StudiedYears.ID";
                 Conn.Open();
                 using (SqlCommand cmd = new SqlCommand(Query, Conn))
                 {
@@ -33,10 +33,10 @@ namespace DataLayer
             {
                 string Query = @"INSERT INTO Subjects
                                     ([SubjectName], [GeneralMostGrade], [MidTermMostGrade], 
-                                     [FinalMidTerm], [MostGrade], [StudiedYear])
+                                     [FinalMidTerm], [MostGrade], [StudiedYearID])
                                      VALUES
                                      (@SubjectName, @GeneralMostGrade, @MidTermMostGrade, 
-                                      @FinalMidTerm, @MostGrade, @StudiedYear);
+                                      @FinalMidTerm, @MostGrade, @StudiedYearID);
                                      SELECT SCOPE_IDENTITY();";
 
                 Conn.Open();
@@ -47,7 +47,7 @@ namespace DataLayer
                     cmd.Parameters.AddWithValue("@MidTermMostGrade", MidTermMostGrade);
                     cmd.Parameters.AddWithValue("@FinalMidTerm", FinalMidTerm);
                     cmd.Parameters.AddWithValue("@MostGrade", MostGrade);
-                    cmd.Parameters.AddWithValue("@StudiedYear", StudiedYear);
+                    cmd.Parameters.AddWithValue("@StudiedYearID", StudiedYear);
 
                     object result = cmd.ExecuteScalar();
                     if (result != null && int.TryParse(result.ToString(), out int ID)) { return ID; }
@@ -94,7 +94,7 @@ namespace DataLayer
                                       ,[MidTermMostGrade] = @MidTermMostGrade
                                       ,[FinalMidTerm] = @FinalMidTerm
                                       ,[MostGrade] = @MostGrade
-                                      ,[StudiedYear] = @StudiedYear
+                                      ,[StudiedYearID] = @StudiedYearID
 
                                     WHERE [ID] = @ID";
                 Conn.Open();
@@ -106,7 +106,7 @@ namespace DataLayer
                     cmd.Parameters.AddWithValue("@MidTermMostGrade", MidTermMostGrade);
                     cmd.Parameters.AddWithValue("@FinalMidTerm", FinalMidTerm);
                     cmd.Parameters.AddWithValue("@MostGrade", MostGrade);
-                    cmd.Parameters.AddWithValue("@StudiedYear", StudiedYear);
+                    cmd.Parameters.AddWithValue("@StudiedYearID", StudiedYear);
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }
@@ -132,7 +132,7 @@ namespace DataLayer
                             MidTermMostGrade = Convert.ToInt32(Reader["MidTermMostGrade"]);
                             FinalMidTerm = Convert.ToInt32(Reader["FinalMidTerm"]);
                             MostGrade = Convert.ToInt32(Reader["MostGrade"]);
-                            StudiedYear = Convert.ToInt32(Reader["StudiedYear"]);
+                            StudiedYear = Convert.ToInt32(Reader["StudiedYearID"]);
                         }
                         return true;
                     }

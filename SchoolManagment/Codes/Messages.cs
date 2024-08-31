@@ -60,6 +60,12 @@ namespace SchoolManagment.Codes
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public static void RequiermentSelectInComboBox()
+        {
+            MessageBox.Show("الرجاء الاختيار من حقل الاختيارات", "خطــأ",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         public static void DuplicateDataMessage(Data Type)
         {
             switch (Type)
@@ -95,9 +101,32 @@ namespace SchoolManagment.Codes
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public static void UnvalidMessage()
+        public static void InvalidMessage()
         {
             MessageBox.Show("الرجاء ادخال بيانات صحيحة", "خطــأ",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public static void SessionInTimeMessage()
+        {
+            MessageBox.Show("يوجد حصة بهذا التوقيت", "خطــأ", 
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public static void EmptyComboboxMessage(Data DataType)
+        {
+            switch (DataType)
+            {
+                case Data.Teacher:
+                    MessageBox.Show("لايوجد اساتذة للاختيار", "خطـــأ",
+                         MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+            }
+        }
+
+        public static void UnvalidTimeMessage()
+        {
+            MessageBox.Show("الرجاء اختيار وقت صحيح", "خطـــأ",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }

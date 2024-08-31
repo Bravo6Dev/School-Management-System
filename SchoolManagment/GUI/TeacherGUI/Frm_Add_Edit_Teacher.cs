@@ -187,7 +187,7 @@ namespace SchoolManagment.GUI.TeacherGUI
         {
             if (!Helper.ValidPhoneNumber(Txt_Phone.Text.Trim()))
             {
-                Messages.UnvalidMessage();
+                Messages.InvalidMessage();
                 Txt_Phone.SelectAll();
                 Txt_Phone.Focus();
             }

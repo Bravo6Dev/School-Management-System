@@ -34,7 +34,7 @@
             Btn_teachers = new Button();
             Btn_Subjects = new Button();
             Btn_Students = new Button();
-            button3 = new Button();
+            Btn_Sessions = new Button();
             button4 = new Button();
             button5 = new Button();
             Btn_AcademicYears = new Button();
@@ -71,7 +71,7 @@
             flowLayoutPanel1.Controls.Add(Btn_teachers);
             flowLayoutPanel1.Controls.Add(Btn_Subjects);
             flowLayoutPanel1.Controls.Add(Btn_Students);
-            flowLayoutPanel1.Controls.Add(button3);
+            flowLayoutPanel1.Controls.Add(Btn_Sessions);
             flowLayoutPanel1.Controls.Add(button4);
             flowLayoutPanel1.Controls.Add(button5);
             flowLayoutPanel1.Controls.Add(Btn_AcademicYears);
@@ -142,24 +142,25 @@
             Btn_Students.UseVisualStyleBackColor = false;
             Btn_Students.Click += Btn_Students_Click;
             // 
-            // button3
+            // Btn_Sessions
             // 
-            button3.BackColor = Color.FromArgb(59, 130, 246);
-            button3.Cursor = Cursors.Hand;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.ForeColor = Color.White;
-            button3.Image = Properties.Resources.training;
-            button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(478, 10);
-            button3.Margin = new Padding(5, 5, 10, 5);
-            button3.Name = "button3";
-            button3.Size = new Size(108, 50);
-            button3.TabIndex = 5;
-            button3.Text = "الحصص";
-            button3.TextAlign = ContentAlignment.MiddleLeft;
-            button3.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button3.UseVisualStyleBackColor = false;
+            Btn_Sessions.BackColor = Color.FromArgb(59, 130, 246);
+            Btn_Sessions.Cursor = Cursors.Hand;
+            Btn_Sessions.FlatAppearance.BorderSize = 0;
+            Btn_Sessions.FlatStyle = FlatStyle.Flat;
+            Btn_Sessions.ForeColor = Color.White;
+            Btn_Sessions.Image = Properties.Resources.training;
+            Btn_Sessions.ImageAlign = ContentAlignment.MiddleLeft;
+            Btn_Sessions.Location = new Point(478, 10);
+            Btn_Sessions.Margin = new Padding(5, 5, 10, 5);
+            Btn_Sessions.Name = "Btn_Sessions";
+            Btn_Sessions.Size = new Size(108, 50);
+            Btn_Sessions.TabIndex = 5;
+            Btn_Sessions.Text = "الحصص";
+            Btn_Sessions.TextAlign = ContentAlignment.MiddleLeft;
+            Btn_Sessions.TextImageRelation = TextImageRelation.ImageBeforeText;
+            Btn_Sessions.UseVisualStyleBackColor = false;
+            Btn_Sessions.Click += Btn_Sessions_Click;
             // 
             // button4
             // 
@@ -258,7 +259,7 @@
         private Button Btn_teachers;
         private Button Btn_Subjects;
         private Button Btn_Students;
-        private Button button3;
+        private Button Btn_Sessions;
         private Button button4;
         private Button button5;
         public Panel Panel_Container;

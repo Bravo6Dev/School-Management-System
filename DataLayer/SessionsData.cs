@@ -5,14 +5,17 @@ using Microsoft.Data.SqlClient;
 namespace DataLayer
 {
     public class SessionsData
-    {
-        static readonly string Connstr = "Server = .; Database = SchoolManagment; Integrated Security = true; TrustServerCertificate=True";
+    { 
         static public DataTable GetAll()
         {
             DataTable DT = new DataTable();
-            using (SqlConnection Conn = new SqlConnection(Connstr))
+            using (SqlConnection Conn = new SqlConnection(ConnStr.Connstr))
             {
-                string Query = "SELECT * FROM Sessions";
+                string Query = @"SELECT Sessions.ID, ClassID, ClassName, FullName, Day, StartTime, EndTime
+                                 FROM Sessions
+                                 JOIN Classes ON Sessions.ClassID = Classes.ID
+                                 JOIN Teachers ON Sessions.TeacherID =  Teachers.ID";
+
                 Conn.Open();
                 using (SqlCommand cmd = new SqlCommand(Query, Conn))
                 {
@@ -25,14 +28,14 @@ namespace DataLayer
             return DT;
         }
 
-        static public int AddNew(int ClassID, int TeacherID, string Day, DateTime Time)
+        static public int AddNew(int ClassID, int TeacherID, string Day, TimeSpan Time, TimeSpan EndTime)
         {
-            using (SqlConnection Conn = new SqlConnection(Connstr))
+            using (SqlConnection Conn = new SqlConnection(ConnStr.Connstr))
             {
                 string Query = @"INSERT INTO Sessions
-                                    ([ClassID], [TeacherID], [Day], [Time])
+                                    ([ClassID], [TeacherID], [Day], [StartTime], [EndTime])
                                      VALUES
-                                     (@ClassID, @TeacherID, @Day, @Time);
+                                     (@ClassID, @TeacherID, @Day, @StartTime, @EndTime);
                                      SELECT SCOPE_IDENTITY();";
 
                 Conn.Open();
@@ -41,7 +44,8 @@ namespace DataLayer
                     cmd.Parameters.AddWithValue("@ClassID", ClassID);
                     cmd.Parameters.AddWithValue("@TeacherID", TeacherID);
                     cmd.Parameters.AddWithValue("@Day", Day);
-                    cmd.Parameters.AddWithValue("@Time", Time);
+                    cmd.Parameters.AddWithValue("@StartTime", Time);
+                    cmd.Parameters.AddWithValue("@EndTime", EndTime);
                     object result = cmd.ExecuteScalar();
                     if (result != null && int.TryParse(result.ToString(), out int ID)) { return ID; }
                     return -1;
@@ -51,7 +55,7 @@ namespace DataLayer
 
         static public bool Delete(int ID)
         {
-            using (SqlConnection Conn = new SqlConnection(Connstr))
+            using (SqlConnection Conn = new SqlConnection(ConnStr.Connstr))
             {
                 string Query = @"DELETE FROM Sessions
                                     WHERE ID = @ID";
@@ -64,15 +68,16 @@ namespace DataLayer
             }
         }
 
-        static public bool Update(int ID, int ClassID, int TeacherID, string Day, DateTime Time)
+        static public bool Update(int ID, int ClassID, int TeacherID, string Day, TimeSpan Time, TimeSpan EndTime)
         {
-            using (SqlConnection Conn = new SqlConnection(Connstr))
+            using (SqlConnection Conn = new SqlConnection(ConnStr.Connstr))
             {
                 string Query = @"UPDATE [Sessions]
                                    SET [ClassID] = @ClassID
                                       ,[TeacherID] = @TeacherID
                                       ,[Day] = @Day
-                                      ,[Time] = @Time
+                                      ,[StartTime] = @Time
+                                      ,[EndTime] = @EndTime
 
                                     WHERE [ID] = @ID";
                 Conn.Open();
@@ -83,13 +88,15 @@ namespace DataLayer
                     cmd.Parameters.AddWithValue("@TeacherID", TeacherID);
                     cmd.Parameters.AddWithValue("@Day", Day);
                     cmd.Parameters.AddWithValue("@Time", Time);
+                    cmd.Parameters.AddWithValue("@EndTime", EndTime);
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }
         }
-        static public bool Find(int ID, ref int ClassID, ref int TeacherID, ref string Day, ref DateTime Time)
+
+        static public bool Find(int ID, ref int ClassID, ref int TeacherID, ref string Day, ref DateTime Time, ref DateTime EndDate)
         {
-            using (SqlConnection Conn = new SqlConnection(Connstr))
+            using (SqlConnection Conn = new SqlConnection(ConnStr.Connstr))
             {
                 string Query = @"SELECT * FROM Sessions
                                     WHERE [ID] = @ID";
@@ -104,8 +111,8 @@ namespace DataLayer
                             ClassID = Convert.ToInt32(Reader["ClassID"]);
                             TeacherID = Convert.ToInt32(Reader["TeacherID"]);
                             Day = Convert.ToString(Reader["Day"]);
-                            Time = Convert.ToDateTime(Reader["Time"]);
-
+                            Time = Convert.ToDateTime(Reader["StartTime"]);
+                            EndDate = Convert.ToDateTime(Reader["EndTime"]);
                         }
                         return true;
                     }

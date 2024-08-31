@@ -110,10 +110,11 @@ namespace BuisnessLayer
                 .Count(S => S.Field<string>("SubjectName") == SubjectName) > 0;
         }
 
-        public static DataTable GetSubjectForClass(int ClassID)
+        public static DataTable GetSubjectForClass(int StudeiedYear)
         {
             return GetAll().AsEnumerable()
-                .Where(R => R.Field<int>("StudiedYear") == ClassID).CopyToDataTable();
+                .Where(R => R.Field<int>("StudiedYearID") == StudeiedYear)
+                .CopyToDataTable();
         }
     }
 }

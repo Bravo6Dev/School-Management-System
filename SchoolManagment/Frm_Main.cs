@@ -1,6 +1,7 @@
 using SchoolManagment.Codes;
 using SchoolManagment.GUI;
 using SchoolManagment.GUI.ClassesGUI;
+using SchoolManagment.GUI.SessionsGUI;
 using SchoolManagment.GUI.StudentsGUI;
 using SchoolManagment.GUI.SubjectsGUI;
 using SchoolManagment.GUI.TeacherGUI;
@@ -46,6 +47,11 @@ namespace SchoolManagment
         private void Btn_AcademicYears_Click(object sender, EventArgs e)
         {
             Pages.SetPages(AcademicYearUserControl.Instance);
+        }
+
+        private void Btn_Sessions_Click(object sender, EventArgs e)
+        {
+            Pages.SetPages(SessionsUserControl.Instance);
         }
     }
 }

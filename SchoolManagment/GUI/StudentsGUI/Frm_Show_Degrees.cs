@@ -16,6 +16,7 @@ namespace SchoolManagment.GUI.StudentsGUI
     {
         SubjectResult StudentResult;
         DataTable Data;
+
         private int StudentID;
 
         private void LoadData()
@@ -30,6 +31,7 @@ namespace SchoolManagment.GUI.StudentsGUI
             Controls.Remove(Pic_Loading);
             Pic_Loading = null;
         }
+
         private void Export()
         {
             DataTable DT = new DataTable();
@@ -56,7 +58,6 @@ namespace SchoolManagment.GUI.StudentsGUI
 
             Helper.Export(DT, $"Degrees of Student {StudentID}");
         }
-
 
         private void ConfigColumns()
         {

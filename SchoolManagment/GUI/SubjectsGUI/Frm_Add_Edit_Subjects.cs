@@ -23,11 +23,11 @@ namespace SchoolManagment.GUI.SubjectsGUI
 
         private async void LoadClasses()
         {
-            cmb_Classes.DataSource = await Task.Run(() => Classes.GetAll());
-            cmb_Classes.ValueMember = "ID";
-            cmb_Classes.DisplayMember = "ClassYear";
-            if (cmb_Classes.Items.Count > 0)
-                cmb_Classes.SelectedIndex = 0;
+            cmb_StudiedYear.DataSource = await Task.Run(() => AcademicYears.GetAll());
+            cmb_StudiedYear.ValueMember = "ID";
+            cmb_StudiedYear.DisplayMember = "StudiedYear";
+            if (cmb_StudiedYear.Items.Count > 0)
+                cmb_StudiedYear.SelectedIndex = 0;
         }
 
         private void LoadDataUpdateMode()
@@ -41,7 +41,7 @@ namespace SchoolManagment.GUI.SubjectsGUI
                 numeric_GeneralGrade.Value = Subject.GeneralGrade;
                 numeric_MidTermGrade.Value = Subject.MidTermMostGrade;
                 numeric_FinalTermGrade.Value = Subject.FinalMidTerm;
-                cmb_Classes.SelectedValue = Subject.StudiedYear;
+                cmb_StudiedYear.SelectedValue = Subject.StudiedYear;
             }
             catch (Exception ex)
             {
@@ -60,7 +60,7 @@ namespace SchoolManagment.GUI.SubjectsGUI
                 GeneralGrade = (int)numeric_GeneralGrade.Value,
                 MidTermMostGrade = (int)numeric_MidTermGrade.Value,
                 FinalMidTerm = (int)numeric_FinalTermGrade.Value,
-                StudiedYear = (int)cmb_Classes.SelectedValue!
+                StudiedYear = (int)cmb_StudiedYear.SelectedValue!
             };
             if (Subject.IsDuplicate())
             {
@@ -86,6 +86,7 @@ namespace SchoolManagment.GUI.SubjectsGUI
             Subject.GeneralGrade = (int)numeric_GeneralGrade.Value;
             Subject.MidTermMostGrade = (int)numeric_MidTermGrade.Value;
             Subject.FinalMidTerm = (int)numeric_FinalTermGrade.Value;
+
             if (Subject.IsDuplicate())
             {
                 Messages.DuplicateDataMessage(Data.Subject);
@@ -134,18 +135,8 @@ namespace SchoolManagment.GUI.SubjectsGUI
             InitializeComponent();
             this.ID = ID;
             LoadDataUpdateMode();
-            cmb_Classes.Enabled = false;
+            cmb_StudiedYear.Enabled = false;
             Mode = enMode.Update;
-        }
-
-        private void Btn_Close_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void Btn_Clear_Click(object sender, EventArgs e)
-        {
-            Clear();
         }
 
         private void Btn_Save_Click(object sender, EventArgs e)
@@ -156,6 +147,16 @@ namespace SchoolManagment.GUI.SubjectsGUI
         private void Frm_Add_Edit_Subjects_Load(object sender, EventArgs e)
         {
             LoadClasses();
+        }
+
+        private void Btn_Close_Click_1(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void cmb_Classes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

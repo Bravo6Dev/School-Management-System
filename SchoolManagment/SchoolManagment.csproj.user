@@ -13,6 +13,12 @@
     <Compile Update="GUI\ClassesGUI\Frm_Add_Classes.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="GUI\SessionsGUI\Frm_Add_Edit_Sessions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\SessionsGUI\SessionsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="GUI\StudentsGUI\Add_Edit_InfoUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

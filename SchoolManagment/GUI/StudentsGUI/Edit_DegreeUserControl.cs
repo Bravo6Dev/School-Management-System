@@ -73,7 +73,7 @@ namespace SchoolManagment.GUI.StudentsGUI
 
         private async void LoadSubjectsOfTerm()
         {
-            cmb_Subjects.DataSource = await Task.Run(() => Subjects.GetSubjectForClass(Student.ClassID));
+            cmb_Subjects.DataSource = await Task.Run(() => Subjects.GetSubjectForClass(Student.Class.AcademicYearID));
             cmb_Subjects.ValueMember = "ID";
             cmb_Subjects.DisplayMember = "SubjectName";
 

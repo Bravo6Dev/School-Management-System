@@ -3,6 +3,7 @@ using DataLayer;
 using System.Data;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 namespace BuisnessLayer
 {
     public class Classes
@@ -31,7 +32,7 @@ namespace BuisnessLayer
             this.ClassName = ClassName;
             this.AcademicYearID = ClassYear;
             this.Capacity = Capicity;
-            this.AcademicYear = AcademicYears.GetById(ID);
+            this.AcademicYear = AcademicYears.GetById(ClassYear);
 
             Mode = enMode.Update;
         }
@@ -46,6 +47,11 @@ namespace BuisnessLayer
         {
             DataTable dt = ClassesData.GetAll();
             return dt;
+        }
+
+        static public async Task<DataTable> GetAllAsync()
+        {
+            return await ClassesData.GetAllAsync();
         }
 
         private bool Update()
