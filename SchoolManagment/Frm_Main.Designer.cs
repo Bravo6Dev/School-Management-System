@@ -36,7 +36,6 @@
             Btn_Students = new Button();
             Btn_Sessions = new Button();
             button4 = new Button();
-            button5 = new Button();
             Btn_AcademicYears = new Button();
             Panel_Container = new Panel();
             panel1.SuspendLayout();
@@ -73,7 +72,6 @@
             flowLayoutPanel1.Controls.Add(Btn_Students);
             flowLayoutPanel1.Controls.Add(Btn_Sessions);
             flowLayoutPanel1.Controls.Add(button4);
-            flowLayoutPanel1.Controls.Add(button5);
             flowLayoutPanel1.Controls.Add(Btn_AcademicYears);
             flowLayoutPanel1.Dock = DockStyle.Bottom;
             flowLayoutPanel1.Location = new Point(0, 569);
@@ -182,25 +180,6 @@
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
-            // button5
-            // 
-            button5.BackColor = Color.FromArgb(59, 130, 246);
-            button5.Cursor = Cursors.Hand;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.ForeColor = Color.White;
-            button5.Image = Properties.Resources.report_card;
-            button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(224, 10);
-            button5.Margin = new Padding(5, 5, 10, 5);
-            button5.Name = "button5";
-            button5.Size = new Size(122, 50);
-            button5.TabIndex = 7;
-            button5.Text = "نتائج الطلبة";
-            button5.TextAlign = ContentAlignment.MiddleLeft;
-            button5.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button5.UseVisualStyleBackColor = false;
-            // 
             // Btn_AcademicYears
             // 
             Btn_AcademicYears.BackColor = Color.FromArgb(59, 130, 246);
@@ -210,7 +189,7 @@
             Btn_AcademicYears.ForeColor = Color.White;
             Btn_AcademicYears.Image = Properties.Resources.report_card;
             Btn_AcademicYears.ImageAlign = ContentAlignment.MiddleLeft;
-            Btn_AcademicYears.Location = new Point(60, 10);
+            Btn_AcademicYears.Location = new Point(197, 10);
             Btn_AcademicYears.Margin = new Padding(5, 5, 10, 5);
             Btn_AcademicYears.Name = "Btn_AcademicYears";
             Btn_AcademicYears.Size = new Size(149, 50);
@@ -261,7 +240,6 @@
         private Button Btn_Students;
         private Button Btn_Sessions;
         private Button button4;
-        private Button button5;
         public Panel Panel_Container;
         private Button Btn_AcademicYears;
     }

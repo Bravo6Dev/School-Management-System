@@ -25,14 +25,14 @@ namespace BuisnessLayer
             Mode = enMode.AddNew;
         }
 
-        public Sessions(int ID, int ClassID, int TeacherID, string Day, DateTime Time, DateTime EndTime)
+        public Sessions(int ID, int ClassID, int TeacherID, string Day, TimeSpan Time, TimeSpan EndTime)
         {
             this.ID = ID;
             this.ClassID = ClassID;
             this.TeacherID = TeacherID;
             this.Day = Day;
-            this.StartTime = Time;
-            this.EndTime = EndTime;
+            this.StartTime = Convert.ToDateTime(Time.ToString());
+            this.EndTime = Convert.ToDateTime(EndTime.ToString());
             Mode = enMode.Update;
         }
 
@@ -65,8 +65,8 @@ namespace BuisnessLayer
             int ClassID = 0;
             int TeacherID = 0;
             string Day = string.Empty;
-            DateTime Time = new DateTime();
-            DateTime EndTime = new DateTime();
+            TimeSpan Time = new TimeSpan();
+            TimeSpan EndTime = new TimeSpan();
 
             return SessionsData.Find(ID, ref ClassID, ref TeacherID, ref Day, ref Time, ref EndTime) ?
                 new Sessions(ID, ClassID, TeacherID, Day, Time, EndTime) : null;

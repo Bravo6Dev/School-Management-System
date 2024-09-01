@@ -17,13 +17,27 @@ namespace SchoolManagment.GUI.SessionsGUI
     {
         enum enMode { AddNew = 1, Update = 2 }
         enMode Mode;
-
+        private int SessionID;
         private DataTable ClassesData;
         private DataTable TeachersData;
 
         private Sessions Session;
         private Classes Class;
         private Teachers Teacher;
+
+        /// <summary>
+        /// Set format as custom format and set the format
+        /// </summary>
+        private void ConfigDatePickers()
+        {
+            // Config DateTime Picker
+            StartTimePicker.Format = DateTimePickerFormat.Custom;
+            StartTimePicker.CustomFormat = "HH:mm tt";
+
+            EndTimePicker.Format = DateTimePickerFormat.Custom;
+            EndTimePicker.CustomFormat = "HH:mm tt";
+        }
+
 
         private async void LoadClassesData()
         {
@@ -60,17 +74,50 @@ namespace SchoolManagment.GUI.SessionsGUI
             }
         }
 
+        private void LoadDataUpdateMode()
+        {
+            LoadClassesData();
+            LoadTeacherData();
+            ConfigDatePickers();
+
+            Session = Sessions.GetById(SessionID);
+            if (Session == null)
+            {
+                Close();
+                return;
+            }
+            cmb_Class.SelectedValue = Session.ClassID;
+            cmb_Teacher.SelectedValue = Session.TeacherID;
+            cmb_Days.SelectedItem = Session.Day;
+            StartTimePicker.Value = Session.StartTime;
+            EndTimePicker.Value = Session.EndTime;
+        }
+
+        private void Update()
+        {
+            if (Session != null)
+                return;
+            Session.TeacherID = (int)cmb_Teacher.SelectedValue;
+            Session.ClassID = (int)cmb_Class.SelectedValue;
+            Session.Day = cmb_Days.SelectedText;
+            Session.StartTime = StartTimePicker.Value;
+            Session.EndTime = EndTimePicker.Value;
+
+            if (Session.Save())
+            {
+                Messages.UpdateMessage(true);
+                Close();
+            }
+            else
+                Messages.UpdateMessage(false);
+        }
+
         private void LoadData()
         {
             LoadClassesData();
             LoadTeacherData();
 
-            // Config DateTime Picker
-            StartTimePicker.Format = DateTimePickerFormat.Custom;
-            StartTimePicker.CustomFormat = "HH:mm tt";
-
-            EndTimePicker.Format = DateTimePickerFormat.Custom;
-            EndTimePicker.CustomFormat = "HH:mm tt";
+            ConfigDatePickers();
 
             if (DateTime.Now.DayOfWeek != DayOfWeek.Saturday)
                 cmb_Days.SelectedIndex = (int)DateTime.Now.DayOfWeek;
@@ -138,16 +185,23 @@ namespace SchoolManagment.GUI.SessionsGUI
                     AddNew();
                     break;
                 case enMode.Update:
+                    Update();
                     break;
             }
         }
 
+        /// <summary>
+        /// Change class object data depends on selected item from combo box
+        /// </summary>
         private void ChangeClass()
         {
             Class = Classes.GetById((int)cmb_Class.SelectedValue);
             Txt_AcademicYear.Text = Class.AcademicYear.AcademicYearName;
         }
 
+        /// <summary>
+        /// Change teacher object data depends on selected item from combo box
+        /// </summary>
         private void ChangeTeacher()
         {
             Teacher = Teachers.GetById((int)cmb_Teacher.SelectedValue);
@@ -161,6 +215,15 @@ namespace SchoolManagment.GUI.SessionsGUI
             ClassesData = TeachersData = new DataTable();
             LoadData();
             Mode = enMode.AddNew;
+        }
+
+        public Frm_Add_Edit_Sessions(int SessionID)
+        {
+            InitializeComponent();
+            this.SessionID = SessionID;
+            ClassesData = TeachersData = new DataTable();
+            LoadDataUpdateMode();
+            Mode = enMode.Update;
         }
 
         private void Btn_Close_Click(object sender, EventArgs e)

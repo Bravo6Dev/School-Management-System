@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             flowLayoutPanel1 = new FlowLayoutPanel();
             Btn_teachers = new Button();
             Btn_Delete = new Button();
@@ -39,7 +39,6 @@
             Txt_AcademicName = new TextBox();
             lbl_Data = new Label();
             Pic_Loading = new PictureBox();
-            Btn_Excel = new Button();
             dgv_AcadimecYear = new DataGridView();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Pic_Loading).BeginInit();
@@ -146,61 +145,41 @@
             Pic_Loading.TabIndex = 14;
             Pic_Loading.TabStop = false;
             // 
-            // Btn_Excel
-            // 
-            Btn_Excel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            Btn_Excel.BackColor = Color.FromArgb(30, 30, 30);
-            Btn_Excel.Cursor = Cursors.Hand;
-            Btn_Excel.FlatAppearance.BorderSize = 0;
-            Btn_Excel.FlatAppearance.MouseOverBackColor = Color.FromArgb(5, 150, 105);
-            Btn_Excel.FlatStyle = FlatStyle.Flat;
-            Btn_Excel.ForeColor = Color.White;
-            Btn_Excel.Image = Properties.Resources.office365;
-            Btn_Excel.ImageAlign = ContentAlignment.MiddleLeft;
-            Btn_Excel.Location = new Point(992, 490);
-            Btn_Excel.Margin = new Padding(6, 7, 13, 7);
-            Btn_Excel.Name = "Btn_Excel";
-            Btn_Excel.Padding = new Padding(5);
-            Btn_Excel.Size = new Size(41, 41);
-            Btn_Excel.TabIndex = 15;
-            Btn_Excel.TextImageRelation = TextImageRelation.ImageBeforeText;
-            Btn_Excel.UseVisualStyleBackColor = false;
-            // 
             // dgv_AcadimecYear
             // 
             dgv_AcadimecYear.AllowUserToAddRows = false;
             dgv_AcadimecYear.AllowUserToDeleteRows = false;
             dgv_AcadimecYear.AllowUserToResizeColumns = false;
             dgv_AcadimecYear.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(46, 46, 46);
-            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.LightGray;
-            dataGridViewCellStyle5.NullValue = "لايوجد";
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(59, 130, 246);
-            dataGridViewCellStyle5.SelectionForeColor = Color.White;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgv_AcadimecYear.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(46, 46, 46);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.LightGray;
+            dataGridViewCellStyle1.NullValue = "لايوجد";
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(59, 130, 246);
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgv_AcadimecYear.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgv_AcadimecYear.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_AcadimecYear.BackgroundColor = Color.FromArgb(30, 30, 30);
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(55, 65, 81);
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = Color.LightGray;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(55, 65, 81);
-            dataGridViewCellStyle6.SelectionForeColor = Color.LightGray;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dgv_AcadimecYear.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(55, 65, 81);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.LightGray;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(55, 65, 81);
+            dataGridViewCellStyle2.SelectionForeColor = Color.LightGray;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgv_AcadimecYear.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgv_AcadimecYear.ColumnHeadersHeight = 50;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = Color.FromArgb(37, 37, 37);
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = Color.White;
-            dataGridViewCellStyle7.NullValue = "لايوجد";
-            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(59, 130, 246);
-            dataGridViewCellStyle7.SelectionForeColor = Color.White;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dgv_AcadimecYear.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(37, 37, 37);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.NullValue = "لايوجد";
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(59, 130, 246);
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgv_AcadimecYear.DefaultCellStyle = dataGridViewCellStyle3;
             dgv_AcadimecYear.Dock = DockStyle.Fill;
             dgv_AcadimecYear.EnableHeadersVisualStyles = false;
             dgv_AcadimecYear.Location = new Point(0, 72);
@@ -208,15 +187,15 @@
             dgv_AcadimecYear.Name = "dgv_AcadimecYear";
             dgv_AcadimecYear.ReadOnly = true;
             dgv_AcadimecYear.RowHeadersVisible = false;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(37, 37, 37);
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = Color.LightGray;
-            dataGridViewCellStyle8.NullValue = "لايوجد";
-            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(59, 130, 246);
-            dataGridViewCellStyle8.SelectionForeColor = Color.White;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dgv_AcadimecYear.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(37, 37, 37);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.LightGray;
+            dataGridViewCellStyle4.NullValue = "لايوجد";
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(59, 130, 246);
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgv_AcadimecYear.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgv_AcadimecYear.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgv_AcadimecYear.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(37, 37, 37);
             dgv_AcadimecYear.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -236,7 +215,6 @@
             BackColor = Color.FromArgb(46, 46, 46);
             Controls.Add(lbl_Data);
             Controls.Add(Pic_Loading);
-            Controls.Add(Btn_Excel);
             Controls.Add(dgv_AcadimecYear);
             Controls.Add(flowLayoutPanel1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -262,7 +240,6 @@
         private Label label1;
         private Label lbl_Data;
         private PictureBox Pic_Loading;
-        private Button Btn_Excel;
         private DataGridView dgv_AcadimecYear;
     }
 }

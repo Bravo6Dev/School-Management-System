@@ -94,7 +94,7 @@ namespace DataLayer
             }
         }
 
-        static public bool Find(int ID, ref int ClassID, ref int TeacherID, ref string Day, ref DateTime Time, ref DateTime EndDate)
+        static public bool Find(int ID, ref int ClassID, ref int TeacherID, ref string Day, ref TimeSpan Time, ref TimeSpan EndDate)
         {
             using (SqlConnection Conn = new SqlConnection(ConnStr.Connstr))
             {
@@ -111,8 +111,8 @@ namespace DataLayer
                             ClassID = Convert.ToInt32(Reader["ClassID"]);
                             TeacherID = Convert.ToInt32(Reader["TeacherID"]);
                             Day = Convert.ToString(Reader["Day"]);
-                            Time = Convert.ToDateTime(Reader["StartTime"]);
-                            EndDate = Convert.ToDateTime(Reader["EndTime"]);
+                            Time = TimeSpan.Parse(Reader["StartTime"].ToString());
+                            EndDate = TimeSpan.Parse(Reader["EndTime"].ToString());
                         }
                         return true;
                     }

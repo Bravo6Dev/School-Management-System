@@ -117,7 +117,7 @@ namespace SchoolManagment.GUI.StudentsGUI
             DT.Columns[4].SetOrdinal(4);
             DT.Columns[4].ColumnName = "رقم الهاتف";
 
-            DT.Columns.Remove("StudiedYear");
+            DT.Columns.Remove("ClassID");
 
             Helper.Export(DT, "Students");
         }

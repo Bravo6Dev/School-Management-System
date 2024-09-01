@@ -105,6 +105,19 @@ namespace SchoolManagment.GUI.SessionsGUI
 
         }
 
+        private void Update()
+        {
+            if (dgv_Sessions.Rows.Count > 0)
+            {
+                int ID = dgv_Sessions.CurrentRow == null ?
+                    (int)dgv_Sessions.Rows[0].Cells[0].Value :
+                    (int)dgv_Sessions.CurrentRow.Cells[0].Value;
+                Frm_Add_Edit_Sessions Frm = new Frm_Add_Edit_Sessions(ID);
+                Frm.ShowDialog();
+                LoadData();
+            }
+        }
+
         private void Search()
         {
             string Filter = "";
@@ -140,6 +153,38 @@ namespace SchoolManagment.GUI.SessionsGUI
             Txt_TeacherName.Clear();
             cmb_Classes.SelectedIndex = cmb_Days.SelectedIndex = 0;
             ck_ByTime.Checked = false;
+        }
+
+        private void Export()
+        {
+            DataTable DT = new DataTable();
+
+            foreach (DataColumn item in Data.Columns)
+                DT.Columns.Add(item.ColumnName, typeof(string));
+            foreach (DataRow item in Data.Rows)
+                DT.ImportRow(item);
+
+            DT.Columns[0].SetOrdinal(0);
+            DT.Columns[0].ColumnName = "ر.ق";
+
+            DT.Columns[2].SetOrdinal(1);
+            DT.Columns[2].ColumnName = "الفصل";
+
+            DT.Columns[3].SetOrdinal(2);
+            DT.Columns[3].ColumnName = "الاستاذ";
+
+            DT.Columns[4].SetOrdinal(3);
+            DT.Columns[4].ColumnName = "اليوم";
+
+            DT.Columns[4].SetOrdinal(4);
+            DT.Columns[4].ColumnName = "بداية الحصة";
+
+            DT.Columns[4].SetOrdinal(5);
+            DT.Columns[4].ColumnName = "نهاية الحصة";
+
+            DT.Columns.Remove("ClassID");
+
+            Helper.Export(DT, "Sessions");
         }
 
         public SessionsUserControl()
@@ -178,7 +223,7 @@ namespace SchoolManagment.GUI.SessionsGUI
 
         private void Btn_Excel_Click(object sender, EventArgs e)
         {
-
+            Export();
         }
 
         private void Btn_Search_Click(object sender, EventArgs e)
@@ -189,6 +234,11 @@ namespace SchoolManagment.GUI.SessionsGUI
         private void Btn_Clear_Click(object sender, EventArgs e)
         {
             Clear();
+        }
+
+        private void Btn_Edit_Click(object sender, EventArgs e)
+        {
+            Update();
         }
     }
 }
